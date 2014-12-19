@@ -2,20 +2,20 @@ package espressolog.com.espressolog;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
 
 
-public class MainActivity extends ActionBarActivity {
+public class newLog extends ActionBarActivity {
 
     private Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        if (mToolbar !=null) {
+        setContentView(R.layout.activity_new_log);
+        if (mToolbar != null) {
             setSupportActionBar(mToolbar);
         }
     }
@@ -36,16 +36,8 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-
-        switch (id) {
-            case R.id.action_settings:
-                return true;
-
-            case R.id.action_help:
-                return true;
-
-            case R.id.action_newLog:
-                return true;
+        if (id == R.id.action_settings) {
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
