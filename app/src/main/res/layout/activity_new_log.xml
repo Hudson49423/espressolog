@@ -3,9 +3,16 @@
     android:layout_height="match_parent"
     tools:context="espressolog.com.espressolog.newLog">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar">
-    </include>
+    <TextView android:id="@+id/shot_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/shot_time_text"/>
+    <EditText
+        android:layout_below="@id/shot_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/shot_time_hint"
+        android:inputType="text"/>
+
 
 </RelativeLayout>

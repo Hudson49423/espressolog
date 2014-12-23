@@ -9,15 +9,11 @@ import android.support.v7.widget.Toolbar;
 
 public class newLog extends ActionBarActivity {
 
-    private Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_log);
-        if (mToolbar != null) {
-            setSupportActionBar(mToolbar);
-        }
     }
 
 
