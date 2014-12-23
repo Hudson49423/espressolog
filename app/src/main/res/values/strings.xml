@@ -9,5 +9,9 @@
     <string name="title_activity_new_log">newLog</string>
     <string name="shot_time_text">Shot time</string>
     <string name="shot_time_hint">Enter shot time here</string>
+    <string name="temperature_text">Temperature</string>
+    <string name="temperature_hint">Enter temperature here</string>
+    <string name="weight_text">Shot weight</string>
+    <string name="weight_hint">Enter shot weight here</string>
 
 </resources>

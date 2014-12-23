@@ -7,12 +7,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/shot_time_text"/>
-    <EditText
+    <EditText android:id="@+id/shot_time_input"
         android:layout_below="@id/shot_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/shot_time_hint"
-        android:inputType="text"/>
+        android:inputType="number"/>
+
+    <TextView android:id="@+id/weight"
+        android:layout_below="@id/shot_time_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weight_text"/>
+    <EditText android:id="@+id/weight_input"
+        android:layout_below="@id/weight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/weight_hint"
+        android:inputType="number"/>
+
+    <TextView android:id="@+id/temperature"
+        android:layout_below="@id/weight_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature_text"/>
+    <EditText android:id="@+id/temperature_input"
+        android:layout_below="@id/temperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/temperature_hint"
+        android:inputType="number"/>
+
 
 
 </RelativeLayout>
