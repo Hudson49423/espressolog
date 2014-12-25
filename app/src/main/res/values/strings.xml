@@ -13,5 +13,7 @@
     <string name="temperature_hint">Enter temperature here</string>
     <string name="weight_text">Shot weight</string>
     <string name="weight_hint">Enter shot weight here</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_save">Save</string>
 
 </resources>

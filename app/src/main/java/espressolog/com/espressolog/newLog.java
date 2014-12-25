@@ -1,10 +1,16 @@
 package espressolog.com.espressolog;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 
 public class newLog extends ActionBarActivity {
@@ -37,5 +43,35 @@ public class newLog extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void save(View view){
+        //saves the data from the new log screen.
+        // Using dummy data for now.
+        String filename = "myFile";
+        String data = "this is some sample data";
+        FileOutputStream outputStream;
+
+        try {
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            outputStream.write(data.getBytes());
+            outputStream.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // takes user back to main activity.
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void cancel(View view){
+
+        // deletes the data file for testing purposes.
+        deleteFile("myFile");
+        // Simply starts the main activity.
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

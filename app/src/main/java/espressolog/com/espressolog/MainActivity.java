@@ -3,9 +3,16 @@ package espressolog.com.espressolog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -15,8 +22,36 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+        String string = "";
 
+        InputStream in = null;
+        try {
+            in = openFileInput("myFile");
+            int content;
+            while ((content = in.read()) != -1) {
+                // convert to char.
+                string = string + ((char) content);
+            }
+        }
+        catch (Exception e) {
+            string = "No data was found";
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        TextView text = (TextView) findViewById(R.id.data_display);
+        text.setText(string);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

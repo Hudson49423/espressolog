@@ -38,6 +38,20 @@
         android:hint="@string/temperature_hint"
         android:inputType="number"/>
 
+    <Button android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/temperature_input"
+        android:text="@string/button_save"
+        android:onClick="save"/>
+
+    <Button android:id="@+id/button_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_save"
+        android:text="@string/button_cancel"
+        android:onClick="cancel"/>
+
 
 
 </RelativeLayout>
