@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 
 
 public class newLog extends ActionBarActivity {
@@ -49,12 +52,21 @@ public class newLog extends ActionBarActivity {
         //saves the data from the new log screen.
         // Using dummy data for now.
         String filename = "myFile";
-        String data = "this is some sample data";
+        String[] data = new String[3];
+        EditText v = (EditText) findViewById(R.id.shot_time_input);
+        data[0] = "Shot time: " + v.getText().toString();
+        v = (EditText) findViewById(R.id.weight_input);
+        data[1] = "Weight: " + v.getText().toString();
+        v = (EditText) findViewById(R.id.temperature_input);
+        data[2] = "Temperature: " +v.getText().toString();
         FileOutputStream outputStream;
 
         try {
             outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-            outputStream.write(data.getBytes());
+            for (String s : data) {
+                outputStream.write(s.getBytes());
+
+            }
             outputStream.close();
         }
         catch (Exception e) {

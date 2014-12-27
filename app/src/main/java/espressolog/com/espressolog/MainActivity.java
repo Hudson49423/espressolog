@@ -3,9 +3,13 @@ package espressolog.com.espressolog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.BufferedInputStream;
@@ -13,44 +17,38 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String string = "";
 
-        InputStream in = null;
-        try {
-            in = openFileInput("myFile");
-            int content;
-            while ((content = in.read()) != -1) {
-                // convert to char.
-                string = string + ((char) content);
-            }
-        }
-        catch (Exception e) {
-            string = "No data was found";
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
+        ArrayList<String> data = new ArrayList<String>();
+        // Dummy data for the array adapter.
+        data.add("Sample data");
+        data.add("1 data");
+        data.add("2 data");
+        data.add("4 data");
+        data.add("8 data");
 
-        }
+        ArrayAdapter<String> mLogAdapter;
+        mLogAdapter = new ArrayAdapter<String>(
+                //the context
+                this,
+                // the id of the list item layout.
+                R.layout.list_item_log,
+                // the id of the text view to populate
+                R.id.list_item_log_text_view,
+                // The raw data.
+                data);
 
-        TextView text = (TextView) findViewById(R.id.data_display);
-        text.setText(string);
+        // Get a reference to the ListView and attach this adapter to it.
+        ListView listView = (ListView) findViewById(R.id.list_view_log);
+        listView.setAdapter(mLogAdapter);
     }
 
     @Override
