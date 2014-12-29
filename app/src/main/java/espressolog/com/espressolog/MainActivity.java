@@ -3,6 +3,7 @@ package espressolog.com.espressolog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,13 +28,32 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<String> data = new ArrayList<String>();
-        // Dummy data for the array adapter.
-        data.add("Sample data");
-        data.add("1 data");
-        data.add("2 data");
-        data.add("4 data");
-        data.add("8 data");
+        String dataString = "";
+
+        // The input stream.
+        InputStream in = null;
+        try {
+            in = openFileInput("myFile");
+            int content;
+            while ((content = in.read()) != -1) {
+                dataString = dataString + ((char) content);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        ArrayList<String> data = getFormatedData(dataString);
 
         ArrayAdapter<String> mLogAdapter;
         mLogAdapter = new ArrayAdapter<String>(
@@ -86,4 +106,39 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, newLog.class);
         startActivity(intent);
     }
+
+    private ArrayList<String> getFormatedData(String dataString) {
+        // Initializing the strings we may use to hold data.
+        String shotTime = null;
+        String weight = null;
+        String temperature = null;
+
+        String[] splitString = dataString.split("##");
+
+        for (String s : splitString) {
+            if (s.startsWith("s")) {
+                shotTime = s.substring(1);
+            }
+            else if (s.startsWith("w")) {
+                weight = s.substring(1);
+            }
+            else if (s.startsWith("t")) {
+                temperature = s.substring(1);
+            }
+        }
+
+        ArrayList<String> returnArray = new ArrayList<>();
+        //errors are not handled if data is not complete.
+        if ((shotTime != null) && (weight != null) && (temperature != null)) {
+            returnArray.add(shotTime);
+            returnArray.add(weight);
+            returnArray.add(temperature);
+        }
+        else {
+            returnArray.add("No data was found!");
+        }
+        return returnArray;
+    }
 }
+
+

@@ -54,11 +54,11 @@ public class newLog extends ActionBarActivity {
         String filename = "myFile";
         String[] data = new String[3];
         EditText v = (EditText) findViewById(R.id.shot_time_input);
-        data[0] = "Shot time: " + v.getText().toString();
+        data[0] = "##sShot Time: " + v.getText().toString();
         v = (EditText) findViewById(R.id.weight_input);
-        data[1] = "Weight: " + v.getText().toString();
+        data[1] = "##wShot Weight: " + v.getText().toString();
         v = (EditText) findViewById(R.id.temperature_input);
-        data[2] = "Temperature: " +v.getText().toString();
+        data[2] = "##tTemperature: " +v.getText().toString();
         FileOutputStream outputStream;
 
         try {
@@ -67,10 +67,10 @@ public class newLog extends ActionBarActivity {
                 outputStream.write(s.getBytes());
 
             }
-            outputStream.close();
         }
         catch (Exception e) {
             e.printStackTrace();
+
         }
 
         // takes user back to main activity.

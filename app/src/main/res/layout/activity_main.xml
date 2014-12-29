@@ -9,6 +9,7 @@
         android:divider="@color/PrimaryColorDark"
         android:dividerHeight="1dp">
 
+
         </ListView>
 
 </FrameLayout>
