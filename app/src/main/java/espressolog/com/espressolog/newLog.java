@@ -61,28 +61,31 @@ public class newLog extends ActionBarActivity {
         String filename = "myFile";
 
         // They key which means this is a new log.
-        //String newLogKey = "###";
+        String newLogKey = "@";
 
 
         // The date.
         String date = getDate();
 
         // The data entered in by the user.
-        String[] data = new String[4];
+        String[] data = new String[6];
         EditText v = (EditText) findViewById(R.id.shot_time_input);
-        data[0] = "##sShot Time: " + v.getText().toString();
+        data[0] = "#sShot Time: " + v.getText().toString();
         v = (EditText) findViewById(R.id.weight_input);
-        data[1] = "##wShot Weight: " + v.getText().toString();
+        data[1] = "#wShot Weight: " + v.getText().toString();
         v = (EditText) findViewById(R.id.temperature_input);
-        data[2] = "##tTemperature: " +v.getText().toString();
-        data[3] = "##d" + date;
+        data[2] = "#tTemperature: " +v.getText().toString();
+        data[3] = "#d" + date;
+        data[4] = "#b47%";
+        data[5] = "#r9/10";
 
         // The output stream.
         FileOutputStream outputStream;
 
         try {
-            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-            //outputStream.write(newLogKey.getBytes());
+            // open the output stream. The MODE_APPEND means that we add onto the file.
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE | MODE_APPEND);
+            outputStream.write(newLogKey.getBytes());
             for (String s : data) {
                 outputStream.write(s.getBytes());
 

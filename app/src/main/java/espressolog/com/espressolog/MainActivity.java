@@ -53,7 +53,9 @@ public class MainActivity extends ActionBarActivity {
             }
         }
 
-        ArrayList<String> data = getFormatedData(dataString);
+
+        ArrayList<String[]> data = getFormatedData(dataString);
+        ArrayList<String> titleData = getTitleArrayList(data);
 
         ArrayAdapter<String> mLogAdapter;
         mLogAdapter = new ArrayAdapter<String>(
@@ -62,21 +64,9 @@ public class MainActivity extends ActionBarActivity {
                 // the id of the list item layout.
                 R.layout.list_item_log,
                 // the id of the text view to populate
-                R.id.text_title,
+                R.id.text_date,
                 // The raw data.
-                data) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-
-                String item = "Sample item";
-
-                TextView subTitleView = (TextView) view.findViewById(R.id.test_subtitle);
-                subTitleView.setText("Sample subtitle");
-
-                return view;
-            }
-        };
+                titleData);
 
         // Get a reference to the ListView and attach this adapter to it.
         ListView listView = (ListView) findViewById(R.id.list_view_log);
@@ -119,40 +109,82 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    private ArrayList<String> getFormatedData(String dataString) {
+    private ArrayList<String[]> getFormatedData(String dataString) {
         // Initializing the strings we may use to hold data.
         String shotTime = null;
         String weight = null;
         String temperature = null;
         String date = null;
+        String brewRatio = null;
+        String rating = null;
 
-        String[] splitString = dataString.split("##");
+        String[] array = new String[6];
 
-        for (String s : splitString) {
-            if (s.startsWith("s")) {
-                shotTime = s.substring(1);
+        // Initialize the return arraylist
+        ArrayList<String[]> returnArray = new ArrayList<>();
+
+        // This gives us the individual log.
+        String[] splitLogs = dataString.split("@");
+
+        // Loops over each saved log.
+        for (String x : splitLogs) {
+            // Splits the data up.
+            String[] splitLogData = x.split("#");
+            // Loops over the split data in the individual log.
+            for (String s : splitLogData) {
+                if (s.startsWith("s")) {
+                    shotTime = s.substring(1);
+                }
+                else if (s.startsWith("w")) {
+                    weight = s.substring(1);
+                }
+                else if (s.startsWith("t")) {
+                    temperature = s.substring(1);
+                }
+                else if (s.startsWith("d")) {
+                    date = s.substring(1);
+                }
+                else if (s.startsWith("b")) {
+                    brewRatio = s.substring(1);
+                }
+                else if (s.startsWith("r")) {
+                    rating = s.substring(1);
+                }
+
+
             }
-            else if (s.startsWith("w")) {
-                weight = s.substring(1);
+            if( (shotTime != null) && (weight != null) && (temperature != null) &&
+                    (date != null) && (brewRatio != null) && (rating != null)) {
+                array[0] = shotTime;
+                array[1] = weight;
+                array[2] = shotTime;
+                array[3] = temperature;
+                array[4] = date;
+                array[5] = brewRatio;
+                returnArray.add(array);
             }
-            else if (s.startsWith("t")) {
-                temperature = s.substring(1);
-            }
-            else if (s.startsWith("d")) {
-                date = s.substring(1);
-            }
+
+
+
         }
 
+        return returnArray;
+    }
+
+    private ArrayList<String> getTitleArrayList(ArrayList<String[]> data) {
         ArrayList<String> returnArray = new ArrayList<>();
-        //errors are not handled if data is not complete.
-        if ((shotTime != null) && (weight != null) && (temperature != null)) {
-            returnArray.add(shotTime);
-            returnArray.add(weight);
-            returnArray.add(temperature);
-            returnArray.add(date);
-        }
-        else {
-            returnArray.add("No data was found!");
+        int i;
+        // The title is the date, which is the third index in each array.
+        for (String[] array : data) {
+            i = 0;
+            for (String string : array) {
+                if ( i == 4) {
+                    if (string != null) {
+                        returnArray.add(string);
+                    }
+                }
+                i++;
+            }
         }
         return returnArray;
     }
