@@ -62,9 +62,21 @@ public class MainActivity extends ActionBarActivity {
                 // the id of the list item layout.
                 R.layout.list_item_log,
                 // the id of the text view to populate
-                R.id.list_item_log_text_view,
+                R.id.text_title,
                 // The raw data.
-                data);
+                data) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                String item = "Sample item";
+
+                TextView subTitleView = (TextView) view.findViewById(R.id.test_subtitle);
+                subTitleView.setText("Sample subtitle");
+
+                return view;
+            }
+        };
 
         // Get a reference to the ListView and attach this adapter to it.
         ListView listView = (ListView) findViewById(R.id.list_view_log);
@@ -112,6 +124,7 @@ public class MainActivity extends ActionBarActivity {
         String shotTime = null;
         String weight = null;
         String temperature = null;
+        String date = null;
 
         String[] splitString = dataString.split("##");
 
@@ -125,6 +138,9 @@ public class MainActivity extends ActionBarActivity {
             else if (s.startsWith("t")) {
                 temperature = s.substring(1);
             }
+            else if (s.startsWith("d")) {
+                date = s.substring(1);
+            }
         }
 
         ArrayList<String> returnArray = new ArrayList<>();
@@ -133,6 +149,7 @@ public class MainActivity extends ActionBarActivity {
             returnArray.add(shotTime);
             returnArray.add(weight);
             returnArray.add(temperature);
+            returnArray.add(date);
         }
         else {
             returnArray.add("No data was found!");

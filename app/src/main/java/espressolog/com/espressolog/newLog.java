@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
 public class newLog extends ActionBarActivity {
@@ -23,6 +26,9 @@ public class newLog extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_log);
+
+        // Set the title
+        setTitle("New Log");
     }
 
 
@@ -50,19 +56,33 @@ public class newLog extends ActionBarActivity {
 
     public void save(View view){
         //saves the data from the new log screen.
-        // Using dummy data for now.
+
+        // The file data will be saved in.
         String filename = "myFile";
-        String[] data = new String[3];
+
+        // They key which means this is a new log.
+        //String newLogKey = "###";
+
+
+        // The date.
+        String date = getDate();
+
+        // The data entered in by the user.
+        String[] data = new String[4];
         EditText v = (EditText) findViewById(R.id.shot_time_input);
         data[0] = "##sShot Time: " + v.getText().toString();
         v = (EditText) findViewById(R.id.weight_input);
         data[1] = "##wShot Weight: " + v.getText().toString();
         v = (EditText) findViewById(R.id.temperature_input);
         data[2] = "##tTemperature: " +v.getText().toString();
+        data[3] = "##d" + date;
+
+        // The output stream.
         FileOutputStream outputStream;
 
         try {
             outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            //outputStream.write(newLogKey.getBytes());
             for (String s : data) {
                 outputStream.write(s.getBytes());
 
@@ -85,5 +105,11 @@ public class newLog extends ActionBarActivity {
         // Simply starts the main activity.
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private String getDate() {
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("M/dd");
+        return sdf.format(c.getTime());
     }
 }
