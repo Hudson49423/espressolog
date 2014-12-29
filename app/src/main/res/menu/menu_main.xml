@@ -11,6 +11,10 @@
         android:title="@string/action_help"
         app:showAsAction="never" />
 
+    <item android:id="@+id/action_clear"
+        android:title="@string/action_clear"
+        app:showAsAction="never" />
+
     <item android:id="@+id/action_newLog"
         android:title="@string/action_newLog"
         app:showAsAction="always" />

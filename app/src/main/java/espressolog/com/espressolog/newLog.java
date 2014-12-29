@@ -102,9 +102,6 @@ public class newLog extends ActionBarActivity {
     }
 
     public void cancel(View view){
-
-        // deletes the data file for testing purposes.
-        deleteFile("myFile");
         // Simply starts the main activity.
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

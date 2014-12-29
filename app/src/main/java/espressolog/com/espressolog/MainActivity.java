@@ -99,6 +99,14 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_newLog:
                 newLog();
                 return true;
+
+            case R.id.action_clear:
+                deleteFile("myFile");
+                // Refresh the activity.
+                Intent refresh = new Intent(this, MainActivity.class);
+                startActivity(refresh);
+                this.finish();
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
