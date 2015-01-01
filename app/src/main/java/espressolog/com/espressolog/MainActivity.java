@@ -28,45 +28,18 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String dataString = "";
 
-        // The input stream.
-        InputStream in = null;
-        try {
-            in = openFileInput("myFile");
-            int content;
-            while ((content = in.read()) != -1) {
-                dataString = dataString + ((char) content);
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        ArrayList<String[]> data = getFormatedData();
+        ArrayList<LogItem> logItems = getLogItems(data);
 
-
-        ArrayList<String[]> data = getFormatedData(dataString);
-        ArrayList<String> titleData = getTitleArrayList(data);
-
-        ArrayAdapter<String> mLogAdapter;
-        mLogAdapter = new ArrayAdapter<String>(
+        ListAdapter mLogAdapter;
+        mLogAdapter = new ListAdapter(
                 //the context
                 this,
                 // the id of the list item layout.
                 R.layout.list_item_log,
-                // the id of the text view to populate
-                R.id.text_date,
                 // The raw data.
-                titleData);
+                logItems);
 
         // Get a reference to the ListView and attach this adapter to it.
         ListView listView = (ListView) findViewById(R.id.list_view_log);
@@ -117,7 +90,7 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    private ArrayList<String[]> getFormatedData(String dataString) {
+    private ArrayList<String[]> getFormatedData() {
         // Initializing the strings we may use to hold data.
         String shotTime = null;
         String weight = null;
@@ -130,6 +103,33 @@ public class MainActivity extends ActionBarActivity {
 
         // Initialize the return arraylist
         ArrayList<String[]> returnArray = new ArrayList<>();
+
+        // Get the unformated data.
+        String dataString = "";
+
+        // The input stream.
+        InputStream in = null;
+        try {
+            in = openFileInput("myFile");
+            int content;
+            while ((content = in.read()) != -1) {
+                dataString = dataString + ((char) content);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         // This gives us the individual log.
         String[] splitLogs = dataString.split("@");
@@ -165,10 +165,10 @@ public class MainActivity extends ActionBarActivity {
                     (date != null) && (brewRatio != null) && (rating != null)) {
                 array[0] = shotTime;
                 array[1] = weight;
-                array[2] = shotTime;
-                array[3] = temperature;
-                array[4] = date;
-                array[5] = brewRatio;
+                array[2] = temperature;
+                array[3] = date;
+                array[4] = brewRatio;
+                array[5] = rating;
                 returnArray.add(array);
             }
 
@@ -194,6 +194,23 @@ public class MainActivity extends ActionBarActivity {
                 i++;
             }
         }
+        return returnArray;
+    }
+
+    private ArrayList<LogItem> getLogItems(ArrayList<String[]> formatedData){
+
+        ArrayList<LogItem> returnArray = new ArrayList<LogItem>();
+
+        LogItem logToAdd;
+
+        if (formatedData != null){
+            for (String[] array : formatedData) {
+                logToAdd = new LogItem();
+                logToAdd.setDataFromArray(array);
+                returnArray.add(logToAdd);
+            }
+        }
+
         return returnArray;
     }
 }

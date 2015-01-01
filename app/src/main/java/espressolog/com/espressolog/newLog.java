@@ -70,11 +70,11 @@ public class newLog extends ActionBarActivity {
         // The data entered in by the user.
         String[] data = new String[6];
         EditText v = (EditText) findViewById(R.id.shot_time_input);
-        data[0] = "#sShot Time: " + v.getText().toString();
+        data[0] = "#s" + v.getText().toString();
         v = (EditText) findViewById(R.id.weight_input);
-        data[1] = "#wShot Weight: " + v.getText().toString();
+        data[1] = "#w" + v.getText().toString();
         v = (EditText) findViewById(R.id.temperature_input);
-        data[2] = "#tTemperature: " +v.getText().toString();
+        data[2] = "#t" +v.getText().toString();
         data[3] = "#d" + date;
         data[4] = "#b47%";
         data[5] = "#r9/10";
