@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -74,10 +75,11 @@ public class newLog extends ActionBarActivity {
         v = (EditText) findViewById(R.id.weight_input);
         data[1] = "#w" + v.getText().toString();
         v = (EditText) findViewById(R.id.temperature_input);
-        data[2] = "#t" +v.getText().toString();
+        data[2] = "#t" + v.getText().toString();
         data[3] = "#d" + date;
         data[4] = "#b47%";
-        data[5] = "#r9/10";
+        v = (EditText) findViewById(R.id.rating_input);
+        data[5] = "#r" + v.getText().toString();
 
         // The output stream.
         FileOutputStream outputStream;
@@ -90,6 +92,13 @@ public class newLog extends ActionBarActivity {
                 outputStream.write(s.getBytes());
 
             }
+
+            // Create a toast to notify the user if the log was saved.
+            Context context = getApplicationContext();
+            CharSequence text = "Log Saved";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -102,6 +111,13 @@ public class newLog extends ActionBarActivity {
     }
 
     public void cancel(View view){
+        // Create a toast to notify the user if the log was cancelled
+        Context context = getApplicationContext();
+        CharSequence text = "Log Cancelled";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
         // Simply starts the main activity.
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

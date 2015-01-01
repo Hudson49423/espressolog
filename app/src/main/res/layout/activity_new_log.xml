@@ -38,10 +38,24 @@
         android:hint="@string/temperature_hint"
         android:inputType="number"/>
 
+
+    <TextView android:id="@+id/rating"
+        android:layout_below="@id/temperature_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_rating"/>
+    <EditText android:id="@+id/rating_input"
+        android:layout_below="@id/rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/rating_hint"
+        android:inputType="number"/>
+
+
     <Button android:id="@+id/button_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/temperature_input"
+        android:layout_below="@id/rating_input"
         android:text="@string/button_save"
         android:onClick="save"/>
 
@@ -51,7 +65,6 @@
         android:layout_below="@id/button_save"
         android:text="@string/button_cancel"
         android:onClick="cancel"/>
-
 
 
 </RelativeLayout>

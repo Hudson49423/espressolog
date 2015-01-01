@@ -16,5 +16,7 @@
     <string name="weight_hint">Enter shot weight here</string>
     <string name="button_cancel">Cancel</string>
     <string name="button_save">Save</string>
+    <string name="text_rating">Rating</string>
+    <string name="rating_hint">Please enter your rating (out of 10)</string>
 
 </resources>
