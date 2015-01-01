@@ -1,5 +1,6 @@
 package espressolog.com.espressolog;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -44,6 +46,17 @@ public class MainActivity extends ActionBarActivity {
         // Get a reference to the ListView and attach this adapter to it.
         ListView listView = (ListView) findViewById(R.id.list_view_log);
         listView.setAdapter(mLogAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Context context = getApplicationContext();
+                Intent intent = new Intent(context, DetailActivity.class);
+                String test = "test data";
+
+                intent.putExtra(Intent.EXTRA_TEXT, test);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -179,24 +192,6 @@ public class MainActivity extends ActionBarActivity {
         return returnArray;
     }
 
-    private ArrayList<String> getTitleArrayList(ArrayList<String[]> data) {
-        ArrayList<String> returnArray = new ArrayList<>();
-        int i;
-        // The title is the date, which is the third index in each array.
-        for (String[] array : data) {
-            i = 0;
-            for (String string : array) {
-                if ( i == 4) {
-                    if (string != null) {
-                        returnArray.add(string);
-                    }
-                }
-                i++;
-            }
-        }
-        return returnArray;
-    }
-
     private ArrayList<LogItem> getLogItems(ArrayList<String[]> formatedData){
 
         ArrayList<LogItem> returnArray = new ArrayList<LogItem>();
@@ -213,6 +208,7 @@ public class MainActivity extends ActionBarActivity {
 
         return returnArray;
     }
+
 }
 
 
