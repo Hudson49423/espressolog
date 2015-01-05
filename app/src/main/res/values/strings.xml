@@ -22,5 +22,10 @@
     <string name="heading">Date Created</string>
     <string name="heading2">Brew Ratio</string>
     <string name="heading3">Rating</string>
+    <string name="date_text_placeholder">12/30</string>
+    <string name="brew_ratio_text_placeholder">47%</string>
+    <string name="shot_time_text_placeholder">Shot time: 27s</string>
+    <string name="rating_text_placeholder">8/10</string>
+
 
 </resources>

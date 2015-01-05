@@ -1,6 +1,5 @@
 package espressolog.com.espressolog;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,12 +11,9 @@ import java.util.List;
 
 /**
  * Created by hudson49423 on 1/1/15.
+ * Populates the list items that display a user's saved logs.
  */
 public class ListAdapter extends ArrayAdapter<LogItem> {
-
-    public ListAdapter (Context context, int textViewResourceId) {
-        super(context, textViewResourceId);
-    }
 
     public ListAdapter(Context context, int resource, List<LogItem> logs) {
         super(context, resource, logs);
@@ -38,7 +34,7 @@ public class ListAdapter extends ArrayAdapter<LogItem> {
 
         if (l != null) {
             TextView dateText = (TextView) v.findViewById((R.id.text_date));
-            TextView shotTimeText = (TextView) v.findViewById(R.id.text_details);
+            TextView shotTimeText = (TextView) v.findViewById(R.id.text_shot_time);
             TextView ratingText = (TextView) v.findViewById(R.id.text_rating);
             TextView brewRatioText = (TextView) v.findViewById(R.id.text_brew_ratio);
 

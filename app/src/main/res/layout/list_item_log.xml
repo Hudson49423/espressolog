@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,24 +8,24 @@
         android:id="@+id/text_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="12/28"
+        android:text="@string/date_text_placeholder"
         android:textAllCaps="false"
         android:textSize="22sp" />
-
-    <TextView
-        android:id="@+id/text_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Subtitle"
-        android:textAllCaps="false"
-        android:textSize="22sp"
-        android:layout_below="@id/text_date"/>
 
     <TextView
         android:id="@+id/text_shot_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="47%"
+        android:text="@string/shot_time_text_placeholder"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_below="@id/text_date"/>
+
+    <TextView
+        android:id="@+id/text_brew_ratio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/brew_ratio_text_placeholder"
         android:textSize="44sp"
         android:layout_centerHorizontal="true"/>
 
@@ -34,7 +33,7 @@
         android:id="@+id/text_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="8/10"
+        android:text="@string/rating_text_placeholder"
         android:textSize="44sp"
         android:layout_alignParentRight="true"/>
 
