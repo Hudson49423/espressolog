@@ -1,5 +1,7 @@
 package espressolog.com.espressolog;
 
+import android.util.Log;
+
 /**
  * Created by hudson49423 on 1/1/15.
  */
@@ -32,7 +34,7 @@ public class LogItem {
     }
 
     public String getBrewRatio(){
-        return brewRatio;
+        return "47%";
     }
 
     public String getTemperature(){
@@ -47,15 +49,16 @@ public class LogItem {
         return rating;
     }
 
+
     public void setDataFromArray(String[] data){
 
-        if(data.length == 6){
+        Log.v("Test3", "test");
+        if(data.length == 5){
             shotTime = data[0];
             shotWeight = data[1];
             temperature = data[2];
             date = data[3];
-            brewRatio = data[4];
-            rating = data[5];
+            rating = data[4];
         }
     }
 }

@@ -77,6 +77,11 @@ public class newLog extends ActionBarActivity {
         }
         else {
 
+            Log.v("Test", s);
+            Log.v("Test", s1);
+            Log.v("Test", s2);
+            Log.v("Test", s3);
+
             // The file data will be saved in.
             String filename = "myFile";
 
@@ -88,18 +93,16 @@ public class newLog extends ActionBarActivity {
             String date = getDate();
 
             // The data entered in by the user.
-            String[] data = new String[6];
-            EditText v = (EditText) findViewById(R.id.shot_time_input);
-            data[0] = "#s" + v.getText().toString();
-            v = (EditText) findViewById(R.id.weight_input);
-            data[1] = "#w" + v.getText().toString();
-            v = (EditText) findViewById(R.id.temperature_input);
-            data[2] = "#t" + v.getText().toString();
+            String[] data = new String[5];
+            data[0] = "#s" + s;
+            data[1] = "#w" + s1;
+            data[2] = "#t" + s2;
             data[3] = "#d" + date;
-            data[4] = "#b47%";
-            v = (EditText) findViewById(R.id.rating_input);
-            data[5] = "#r" + v.getText().toString();
+            data[4] = "#r" + s3;
 
+            for(String f : data) {
+                Log.v("Test2", f);
+            }
             // The output stream.
             FileOutputStream outputStream;
 

@@ -30,9 +30,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        ArrayList<String[]> data = getFormatedData();
-        ArrayList<LogItem> logItems = getLogItems(data);
+        ArrayList<LogItem> logItems = getLogItems(getFormatedData());
 
         ListAdapter mLogAdapter;
         mLogAdapter = new ListAdapter(
@@ -112,7 +110,7 @@ public class MainActivity extends ActionBarActivity {
         String brewRatio = null;
         String rating = null;
 
-        String[] array = new String[6];
+        String[] array = new String[5];
 
         // Initialize the return arraylist
         ArrayList<String[]> returnArray = new ArrayList<>();
@@ -165,9 +163,6 @@ public class MainActivity extends ActionBarActivity {
                 else if (s.startsWith("d")) {
                     date = s.substring(1);
                 }
-                else if (s.startsWith("b")) {
-                    brewRatio = s.substring(1);
-                }
                 else if (s.startsWith("r")) {
                     rating = s.substring(1);
                 }
@@ -175,13 +170,12 @@ public class MainActivity extends ActionBarActivity {
 
             }
             if( (shotTime != null) && (weight != null) && (temperature != null) &&
-                    (date != null) && (brewRatio != null) && (rating != null)) {
+                    (date != null) && (rating != null)) {
                 array[0] = shotTime;
                 array[1] = weight;
                 array[2] = temperature;
                 array[3] = date;
-                array[4] = brewRatio;
-                array[5] = rating;
+                array[4] = rating;
                 returnArray.add(array);
             }
 
