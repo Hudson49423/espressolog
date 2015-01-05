@@ -12,6 +12,7 @@
         android:text="12/28"
         android:textAllCaps="false"
         android:textSize="22sp" />
+
     <TextView
         android:id="@+id/text_details"
         android:layout_width="wrap_content"
@@ -20,13 +21,15 @@
         android:textAllCaps="false"
         android:textSize="22sp"
         android:layout_below="@id/text_date"/>
+
     <TextView
-        android:id="@+id/text_brew_ratio"
+        android:id="@+id/text_shot_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="47%"
         android:textSize="44sp"
         android:layout_centerHorizontal="true"/>
+
     <TextView
         android:id="@+id/text_rating"
         android:layout_width="wrap_content"
@@ -34,4 +37,5 @@
         android:text="8/10"
         android:textSize="44sp"
         android:layout_alignParentRight="true"/>
+
 </RelativeLayout>

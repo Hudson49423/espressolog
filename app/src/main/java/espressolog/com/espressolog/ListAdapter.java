@@ -40,6 +40,7 @@ public class ListAdapter extends ArrayAdapter<LogItem> {
             TextView dateText = (TextView) v.findViewById((R.id.text_date));
             TextView shotTimeText = (TextView) v.findViewById(R.id.text_details);
             TextView ratingText = (TextView) v.findViewById(R.id.text_rating);
+            TextView brewRatioText = (TextView) v.findViewById(R.id.text_brew_ratio);
 
             if (dateText != null) {
                 dateText.setText(l.getDate());
@@ -49,6 +50,9 @@ public class ListAdapter extends ArrayAdapter<LogItem> {
             }
             if (ratingText != null){
                 ratingText.setText((l.getRating()) + "/10");
+            }
+            if (brewRatioText != null) {
+                brewRatioText.setText(l.getBrewRatio());
             }
         }
 
