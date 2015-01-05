@@ -1,5 +1,6 @@
 package espressolog.com.espressolog;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -56,58 +57,75 @@ public class newLog extends ActionBarActivity {
     }
 
     public void save(View view){
-        //saves the data from the new log screen.
 
-        // The file data will be saved in.
-        String filename = "myFile";
+        // Make sure that the user has entered all of the data needed to create a new log file.
+        EditText e = (EditText) findViewById(R.id.shot_time_input);
+        EditText e1 = (EditText) findViewById(R.id.weight_input);
+        EditText e2 = (EditText) findViewById(R.id.temperature_input);
+        EditText e3 = (EditText) findViewById(R.id.rating_input);
+        String s = e.getText().toString();
+        String s1 = e1.getText().toString();
+        String s2 = e2.getText().toString();
+        String s3 = e3.getText().toString();
 
-        // They key which means this is a new log.
-        String newLogKey = "@";
-
-
-        // The date.
-        String date = getDate();
-
-        // The data entered in by the user.
-        String[] data = new String[6];
-        EditText v = (EditText) findViewById(R.id.shot_time_input);
-        data[0] = "#s" + v.getText().toString();
-        v = (EditText) findViewById(R.id.weight_input);
-        data[1] = "#w" + v.getText().toString();
-        v = (EditText) findViewById(R.id.temperature_input);
-        data[2] = "#t" + v.getText().toString();
-        data[3] = "#d" + date;
-        data[4] = "#b47%";
-        v = (EditText) findViewById(R.id.rating_input);
-        data[5] = "#r" + v.getText().toString();
-
-        // The output stream.
-        FileOutputStream outputStream;
-
-        try {
-            // open the output stream. The MODE_APPEND means that we add onto the file.
-            outputStream = openFileOutput(filename, Context.MODE_PRIVATE | MODE_APPEND);
-            outputStream.write(newLogKey.getBytes());
-            for (String s : data) {
-                outputStream.write(s.getBytes());
-
-            }
-
-            // Create a toast to notify the user if the log was saved.
+        if ((s.isEmpty()) || (s1.isEmpty()) || (s2.isEmpty()) || (s3.isEmpty())) {
             Context context = getApplicationContext();
-            CharSequence text = "Log Saved";
+            CharSequence text = "Please complete all fields";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        else {
 
+            // The file data will be saved in.
+            String filename = "myFile";
+
+            // They key which means this is a new log.
+            String newLogKey = "@";
+
+
+            // The date.
+            String date = getDate();
+
+            // The data entered in by the user.
+            String[] data = new String[6];
+            EditText v = (EditText) findViewById(R.id.shot_time_input);
+            data[0] = "#s" + v.getText().toString();
+            v = (EditText) findViewById(R.id.weight_input);
+            data[1] = "#w" + v.getText().toString();
+            v = (EditText) findViewById(R.id.temperature_input);
+            data[2] = "#t" + v.getText().toString();
+            data[3] = "#d" + date;
+            data[4] = "#b47%";
+            v = (EditText) findViewById(R.id.rating_input);
+            data[5] = "#r" + v.getText().toString();
+
+            // The output stream.
+            FileOutputStream outputStream;
+
+            try {
+                // open the output stream. The MODE_APPEND means that we add onto the file.
+                outputStream = openFileOutput(filename, Context.MODE_PRIVATE | MODE_APPEND);
+                outputStream.write(newLogKey.getBytes());
+                for (String string : data) {
+                    outputStream.write(string.getBytes());
+
+                }
+
+                // Create a toast to notify the user if the log was saved.
+                Context context = getApplicationContext();
+                CharSequence text = "Log Saved";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+
+            }
+            // takes user back to main activity.
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
-
-        // takes user back to main activity.
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
     public void cancel(View view){
