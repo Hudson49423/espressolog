@@ -5,6 +5,6 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/PrimaryColor</item>
         <item name="colorPrimaryDark">@color/PrimaryColorDark</item>
-        <item name="android:textColor">@color/PrimaryText</item>
+        <item name="android:textColor">@color/PrimaryColorDark</item>
     </style>
 </resources>
