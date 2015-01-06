@@ -65,12 +65,14 @@ public class newLog extends ActionBarActivity {
         EditText e1 = (EditText) findViewById(R.id.weight_input);
         EditText e2 = (EditText) findViewById(R.id.temperature_input);
         EditText e3 = (EditText) findViewById(R.id.rating_input);
+        EditText e4 = (EditText) findViewById(R.id.dose_input);
         String s = e.getText().toString();
         String s1 = e1.getText().toString();
         String s2 = e2.getText().toString();
         String s3 = e3.getText().toString();
+        String s4 = e4.getText().toString();
 
-        if ((s.isEmpty()) || (s1.isEmpty()) || (s2.isEmpty()) || (s3.isEmpty())) {
+        if ((s.isEmpty()) || (s1.isEmpty()) || (s2.isEmpty()) || (s3.isEmpty()) || (s4.isEmpty())) {
             Context context = getApplicationContext();
             CharSequence text = "Please complete all fields";
             int duration = Toast.LENGTH_SHORT;
@@ -90,12 +92,13 @@ public class newLog extends ActionBarActivity {
             String date = getDate();
 
             // The data entered in by the user.
-            String[] data = new String[5];
+            String[] data = new String[6];
             data[0] = s;
             data[1] = s1;
             data[2] = s2;
             data[3] = date;
             data[4] = s3;
+            data[5] = s4;
 
 
             try {

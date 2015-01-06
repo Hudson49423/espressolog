@@ -13,6 +13,7 @@ public class LogItem {
     private String date;
     private String rating;
     private int id;
+    private String dose;
 
     public LogItem() {
     }
@@ -52,6 +53,8 @@ public class LogItem {
 
     public int getId(){ return id; }
 
+    public String getDose() { return dose; }
+
     public String toString(){
         return "LOG";
     }
@@ -76,16 +79,19 @@ public class LogItem {
 
     public void setRating(String rating) { this.rating = rating; }
 
+    public void setDose(String dose) { this.dose = dose; }
+
 
     public void setDataFromArray(String[] data){
 
         Log.v("Test3", "test");
-        if(data.length == 5){
+        if(data.length == 6){
             shotTime = data[0];
             shotWeight = data[1];
             temperature = data[2];
             date = data[3];
             rating = data[4];
+            dose = data[5];
         }
     }
 }

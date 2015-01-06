@@ -51,11 +51,23 @@
         android:hint="@string/rating_hint"
         android:inputType="number"/>
 
+    <TextView android:id="@+id/dose"
+        android:layout_below="@id/rating_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_dose"/>
+    <EditText android:id="@+id/dose_input"
+        android:layout_below="@id/dose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/dose_hint"
+        android:inputType="number"/>
+
 
     <Button android:id="@+id/button_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rating_input"
+        android:layout_below="@id/dose_input"
         android:text="@string/button_save"
         android:onClick="save"/>
 

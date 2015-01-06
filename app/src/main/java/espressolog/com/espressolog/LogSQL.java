@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class LogSQL extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     // The database name.
     private static final String DATABASE_NAME = "LogDB";
 
@@ -35,7 +35,8 @@ public class LogSQL extends SQLiteOpenHelper {
                 "shotWeight TEXT, " +
                 "temperature TEXT, " +
                 "brewRatio TEXT, " +
-                "rating Text )";
+                "rating Text, " +
+                "dose TEXT )";
 
         // Create the logs table.
         db.execSQL(CREATE_LOG_TABLE);
@@ -63,6 +64,7 @@ public class LogSQL extends SQLiteOpenHelper {
     private static final String KEY_TEMPERATURE = "temperature";
     private static final String KEY_BREWRATIO = "brewRatio";
     private static final String KEY_RATING = "rating";
+    private static final String KEY_DOSE = "dose";
 
     private static final String[] COLUMNS = {
                                 KEY_ID,
@@ -71,7 +73,8 @@ public class LogSQL extends SQLiteOpenHelper {
                                 KEY_SHOTWEIGHT,
                                 KEY_TEMPERATURE,
                                 KEY_BREWRATIO,
-                                KEY_RATING };
+                                KEY_RATING,
+                                KEY_DOSE};
 
     public void addLog(LogItem log){
         Log.v("addLog", log.toString());
@@ -87,6 +90,7 @@ public class LogSQL extends SQLiteOpenHelper {
         values.put(KEY_TEMPERATURE, log.getTemperature());
         values.put(KEY_BREWRATIO, log.getBrewRatio());
         values.put(KEY_RATING, log.getRating());
+        values.put(KEY_DOSE, log.getDose());
 
         // Insert into db.
         db.insert(TABLE_LOGS, // Table
@@ -127,6 +131,7 @@ public class LogSQL extends SQLiteOpenHelper {
         log.setTemperature(cursor.getString(4));
         log.setBrewRatio(cursor.getString(5));
         log.setRating(cursor.getString(6));
+        log.setDose(cursor.getString(7));
 
         Log.v("Get log(" + id + ")", log.toString());
 
@@ -147,6 +152,7 @@ public class LogSQL extends SQLiteOpenHelper {
         values.put("temperature", log.getTemperature());
         values.put("brewRating", log.getBrewRatio());
         values.put("rating", log.getRating());
+        values.put("dose", log.getDose());
 
         // 3. updating row
         int i = db.update(TABLE_LOGS, //table
@@ -201,6 +207,7 @@ public class LogSQL extends SQLiteOpenHelper {
                 log.setTemperature(cursor.getString(4));
                 log.setBrewRatio(cursor.getString(5));
                 log.setRating(cursor.getString(6));
+                log.setDose(cursor.getString(7));
 
                 // Add book to books
                 logs.add(log);
