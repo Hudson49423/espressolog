@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -77,11 +79,6 @@ public class newLog extends ActionBarActivity {
         }
         else {
 
-            Log.v("Test", s);
-            Log.v("Test", s1);
-            Log.v("Test", s2);
-            Log.v("Test", s3);
-
             // The file data will be saved in.
             String filename = "myFile";
 
@@ -94,26 +91,23 @@ public class newLog extends ActionBarActivity {
 
             // The data entered in by the user.
             String[] data = new String[5];
-            data[0] = "#s" + s;
-            data[1] = "#w" + s1;
-            data[2] = "#t" + s2;
-            data[3] = "#d" + date;
-            data[4] = "#r" + s3;
+            data[0] = s;
+            data[1] = s1;
+            data[2] = s2;
+            data[3] = date;
+            data[4] = s3;
 
-            for(String f : data) {
-                Log.v("Test2", f);
-            }
-            // The output stream.
-            FileOutputStream outputStream;
 
             try {
-                // open the output stream. The MODE_APPEND means that we add onto the file.
-                outputStream = openFileOutput(filename, Context.MODE_PRIVATE | MODE_APPEND);
-                outputStream.write(newLogKey.getBytes());
-                for (String string : data) {
-                    outputStream.write(string.getBytes());
+                // Create the database.
+                LogSQL db = new LogSQL(this);
 
-                }
+                // Create the log to add.
+                LogItem logToAdd = new LogItem();
+                logToAdd.setDataFromArray(data);
+
+                // Add this log to the SQL database.
+                db.addLog(logToAdd);
 
                 // Create a toast to notify the user if the log was saved.
                 Context context = getApplicationContext();
@@ -132,10 +126,6 @@ public class newLog extends ActionBarActivity {
     }
 
     public void cancel(View view){
-
-        // Test to see if this activity is able to read data base.
-        LogSQL db = new LogSQL(this);
-        db.logAutoIncrements();
 
         // Create a toast to notify the user if the log was cancelled
         Context context = getApplicationContext();

@@ -26,8 +26,6 @@ public class MainActivity extends ActionBarActivity {
         // Create db.
         LogSQL db = new LogSQL(this);
 
-        ArrayList<LogItem> logItems = getLogItems(getFormatedData());
-
         ArrayList<LogItem> logsFromSQL = db.getAllLogs();
 
         ListAdapter mLogAdapter;
@@ -97,107 +95,6 @@ public class MainActivity extends ActionBarActivity {
     private void newLog(){
         Intent intent = new Intent(this, newLog.class);
         startActivity(intent);
-    }
-
-    private ArrayList<String[]> getFormatedData() {
-        // Initializing the strings we may use to hold data.
-        String shotTime = null;
-        String weight = null;
-        String temperature = null;
-        String date = null;
-        String rating = null;
-
-        String[] array = new String[5];
-
-        // Initialize the return arraylist
-        ArrayList<String[]> returnArray = new ArrayList<>();
-
-        // Get the unformated data.
-        String dataString = "";
-
-        // The input stream.
-        InputStream in = null;
-        try {
-            in = openFileInput("myFile");
-            int content;
-            while ((content = in.read()) != -1) {
-                dataString = dataString + ((char) content);
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-        // This gives us the individual log.
-        String[] splitLogs = dataString.split("@");
-
-        // Loops over each saved log.
-        for (String x : splitLogs) {
-            // Splits the data up.
-            String[] splitLogData = x.split("#");
-            // Loops over the split data in the individual log.
-            for (String s : splitLogData) {
-                if (s.startsWith("s")) {
-                    shotTime = s.substring(1);
-                }
-                else if (s.startsWith("w")) {
-                    weight = s.substring(1);
-                }
-                else if (s.startsWith("t")) {
-                    temperature = s.substring(1);
-                }
-                else if (s.startsWith("d")) {
-                    date = s.substring(1);
-                }
-                else if (s.startsWith("r")) {
-                    rating = s.substring(1);
-                }
-
-
-            }
-            if( (shotTime != null) && (weight != null) && (temperature != null) &&
-                    (date != null) && (rating != null)) {
-                array[0] = shotTime;
-                array[1] = weight;
-                array[2] = temperature;
-                array[3] = date;
-                array[4] = rating;
-                returnArray.add(array);
-            }
-
-
-
-        }
-
-        return returnArray;
-    }
-
-    private ArrayList<LogItem> getLogItems(ArrayList<String[]> formatedData){
-
-        ArrayList<LogItem> returnArray = new ArrayList<>();
-
-        LogItem logToAdd;
-
-        if (formatedData != null){
-            for (String[] array : formatedData) {
-                logToAdd = new LogItem();
-                logToAdd.setDataFromArray(array);
-                returnArray.add(logToAdd);
-            }
-        }
-
-        return returnArray;
     }
 
 }
