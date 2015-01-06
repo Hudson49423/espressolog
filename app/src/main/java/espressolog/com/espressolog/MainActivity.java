@@ -81,7 +81,8 @@ public class MainActivity extends ActionBarActivity {
                 return true;
 
             case R.id.action_clear:
-                deleteFile("myFile");
+                LogSQL db = new LogSQL(this);
+                db.clearAll();
                 // Refresh the activity.
                 Intent refresh = new Intent(this, MainActivity.class);
                 startActivity(refresh);

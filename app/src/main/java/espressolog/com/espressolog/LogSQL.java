@@ -228,4 +228,9 @@ public class LogSQL extends SQLiteOpenHelper {
         cursor.close();
 
     }
+
+    public void clearAll(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("logs", null, null);
+    }
 }
