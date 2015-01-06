@@ -4,20 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -107,7 +98,6 @@ public class MainActivity extends ActionBarActivity {
         String weight = null;
         String temperature = null;
         String date = null;
-        String brewRatio = null;
         String rating = null;
 
         String[] array = new String[5];
@@ -188,7 +178,7 @@ public class MainActivity extends ActionBarActivity {
 
     private ArrayList<LogItem> getLogItems(ArrayList<String[]> formatedData){
 
-        ArrayList<LogItem> returnArray = new ArrayList<LogItem>();
+        ArrayList<LogItem> returnArray = new ArrayList<>();
 
         LogItem logToAdd;
 
