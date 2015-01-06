@@ -12,6 +12,7 @@ public class LogItem {
     private String temperature;
     private String date;
     private String rating;
+    private int id;
 
     public LogItem() {
     }
@@ -47,6 +48,24 @@ public class LogItem {
 
     public String getRating(){
         return rating;
+    }
+
+    public int getId(){ return id; }
+
+    public String toString(){
+        return "LOG";
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public void setShotTime(String shotTime){
+        this.shotTime = shotTime;
+    }
+
+    public void setDate(String date){
+        this.date = date;
     }
 
 

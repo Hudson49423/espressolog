@@ -12,6 +12,7 @@ import android.widget.ListView;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -21,7 +22,21 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Create db.
+        LogSQL db = new LogSQL(this);
+
+
+
         ArrayList<LogItem> logItems = getLogItems(getFormatedData());
+
+        // Test to add logs to SQL databse
+        if (logItems.size() > 0) {
+            for (LogItem log : logItems) {
+                db.addLog(log);
+            }
+        }
+        // Test to get all logs.
+        List<LogItem> allLogs = db.getAllLogs();
 
         ListAdapter mLogAdapter;
         mLogAdapter = new ListAdapter(
