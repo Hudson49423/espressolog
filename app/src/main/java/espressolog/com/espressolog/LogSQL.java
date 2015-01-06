@@ -211,4 +211,20 @@ public class LogSQL extends SQLiteOpenHelper {
         // return books
         return logs;
     }
+
+    public void logAutoIncrements(){
+        String query = "SELECT * FROM SQLITE_SEQUENCE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()){
+            do{
+                Log.v("Log Table name: ", cursor.getString(cursor.getColumnIndex("name")));
+                Log.v("Id value: ", cursor.getString(cursor.getColumnIndex("seq")));
+
+            }while (cursor.moveToNext());
+        }
+
+        cursor.close();
+
+    }
 }

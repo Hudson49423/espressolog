@@ -35,8 +35,9 @@ public class MainActivity extends ActionBarActivity {
                 db.addLog(log);
             }
         }
-        // Test to get all logs.
-        List<LogItem> allLogs = db.getAllLogs();
+
+        // Test to check all logs id.
+        db.logAutoIncrements();
 
         ListAdapter mLogAdapter;
         mLogAdapter = new ListAdapter(
