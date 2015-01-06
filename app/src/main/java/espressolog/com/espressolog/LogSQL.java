@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class LogSQL extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     // The database name.
     private static final String DATABASE_NAME = "LogDB";
 
@@ -70,7 +71,7 @@ public class LogSQL extends SQLiteOpenHelper {
                                 KEY_SHOTWEIGHT,
                                 KEY_TEMPERATURE,
                                 KEY_BREWRATIO,
-                                KEY_RATING};
+                                KEY_RATING };
 
     public void addLog(LogItem log){
         Log.v("addLog", log.toString());
@@ -178,8 +179,8 @@ public class LogSQL extends SQLiteOpenHelper {
 
     }
 
-    public List<LogItem> getAllLogs() {
-        List<LogItem> logs = new LinkedList<LogItem>();
+    public ArrayList<LogItem> getAllLogs() {
+        ArrayList<LogItem> logs = new ArrayList<LogItem>();
 
         // 1. build the query
         String query = "SELECT  * FROM " + TABLE_LOGS;

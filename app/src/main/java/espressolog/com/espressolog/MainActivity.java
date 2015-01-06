@@ -2,6 +2,7 @@ package espressolog.com.espressolog;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,19 +26,9 @@ public class MainActivity extends ActionBarActivity {
         // Create db.
         LogSQL db = new LogSQL(this);
 
-
-
         ArrayList<LogItem> logItems = getLogItems(getFormatedData());
 
-        // Test to add logs to SQL databse
-        if (logItems.size() > 0) {
-            for (LogItem log : logItems) {
-                db.addLog(log);
-            }
-        }
-
-        // Test to check all logs id.
-        db.logAutoIncrements();
+        ArrayList<LogItem> logsFromSQL = db.getAllLogs();
 
         ListAdapter mLogAdapter;
         mLogAdapter = new ListAdapter(
@@ -46,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
                 // the id of the list item layout.
                 R.layout.list_item_log,
                 // The raw data.
-                logItems);
+                logsFromSQL);
 
         // Get a reference to the ListView and attach this adapter to it.
         ListView listView = (ListView) findViewById(R.id.list_view_log);

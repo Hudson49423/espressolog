@@ -132,6 +132,11 @@ public class newLog extends ActionBarActivity {
     }
 
     public void cancel(View view){
+
+        // Test to see if this activity is able to read data base.
+        LogSQL db = new LogSQL(this);
+        db.logAutoIncrements();
+
         // Create a toast to notify the user if the log was cancelled
         Context context = getApplicationContext();
         CharSequence text = "Log Cancelled";
