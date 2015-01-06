@@ -68,6 +68,14 @@ public class LogItem {
         this.date = date;
     }
 
+    public void setShotWeight(String shotWeight) { this.shotWeight = shotWeight; }
+
+    public void setBrewRatio(String brewRatio) { this.brewRatio = brewRatio; }
+
+    public void setTemperature(String temperature) { this.temperature = temperature; }
+
+    public void setRating(String rating) { this.rating = rating; }
+
 
     public void setDataFromArray(String[] data){
 

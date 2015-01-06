@@ -27,13 +27,17 @@ public class LogSQL extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // SQL statement to create log table.
-        String CREATE_BOOK_TABLE = "CREATE TABLE logs ( " +
+        String CREATE_LOG_TABLE = "CREATE TABLE logs ( " +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "date TEXT, " +
-                "shotTime TEXT )";
+                "shotTime TEXT, " +
+                "shotWeight TEXT, " +
+                "temperature TEXT, " +
+                "brewRatio TEXT, " +
+                "rating Text )";
 
         // Create the logs table.
-        db.execSQL(CREATE_BOOK_TABLE);
+        db.execSQL(CREATE_LOG_TABLE);
     }
 
     @Override
@@ -54,8 +58,19 @@ public class LogSQL extends SQLiteOpenHelper {
     private static final String KEY_ID = "id";
     private static final String KEY_DATE = "date";
     private static final String KEY_SHOTTIME = "shotTime";
+    private static final String KEY_SHOTWEIGHT = "shotWeight";
+    private static final String KEY_TEMPERATURE = "temperature";
+    private static final String KEY_BREWRATIO = "brewRatio";
+    private static final String KEY_RATING = "rating";
 
-    private static final String[] COLUMNS = {KEY_ID, KEY_DATE, KEY_SHOTTIME};
+    private static final String[] COLUMNS = {
+                                KEY_ID,
+                                KEY_DATE,
+                                KEY_SHOTTIME,
+                                KEY_SHOTWEIGHT,
+                                KEY_TEMPERATURE,
+                                KEY_BREWRATIO,
+                                KEY_RATING};
 
     public void addLog(LogItem log){
         Log.v("addLog", log.toString());
@@ -67,6 +82,10 @@ public class LogSQL extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_DATE, log.getDate());
         values.put(KEY_SHOTTIME, log.getShotTime());
+        values.put(KEY_SHOTWEIGHT, log.getShotWeight());
+        values.put(KEY_TEMPERATURE, log.getTemperature());
+        values.put(KEY_BREWRATIO, log.getBrewRatio());
+        values.put(KEY_RATING, log.getRating());
 
         // Insert into db.
         db.insert(TABLE_LOGS, // Table
@@ -103,6 +122,10 @@ public class LogSQL extends SQLiteOpenHelper {
         log.setId(Integer.parseInt(cursor.getString(0)));
         log.setDate(cursor.getString(1));
         log.setShotTime(cursor.getString(2));
+        log.setShotWeight(cursor.getString(3));
+        log.setTemperature(cursor.getString(4));
+        log.setBrewRatio(cursor.getString(5));
+        log.setRating(cursor.getString(6));
 
         Log.v("Get log(" + id + ")", log.toString());
 
@@ -119,6 +142,10 @@ public class LogSQL extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("date", log.getDate()); // get date
         values.put("shotTime", log.getShotTime()); // get shot time
+        values.put("shotWeight", log.getShotWeight());
+        values.put("temperature", log.getTemperature());
+        values.put("brewRating", log.getBrewRatio());
+        values.put("rating", log.getRating());
 
         // 3. updating row
         int i = db.update(TABLE_LOGS, //table
@@ -169,6 +196,10 @@ public class LogSQL extends SQLiteOpenHelper {
                 log.setId(Integer.parseInt(cursor.getString(0)));
                 log.setDate(cursor.getString(1));
                 log.setShotTime(cursor.getString(2));
+                log.setShotWeight(cursor.getString(3));
+                log.setTemperature(cursor.getString(4));
+                log.setBrewRatio(cursor.getString(5));
+                log.setRating(cursor.getString(6));
 
                 // Add book to books
                 logs.add(log);
