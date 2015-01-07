@@ -25,6 +25,7 @@ public class LogItem {
         this.shotTime = shotTime;
         this.shotWeight = shotWeight;
         this.date = date;
+        this.rating = rating;
     }
 
     public String getShotTime(){
@@ -36,7 +37,12 @@ public class LogItem {
     }
 
     public String getBrewRatio(){
-        return "47%";
+        if (brewRatio == null) {
+            return calculateBrewRatio();
+        }
+        else {
+            return brewRatio;
+        }
     }
 
     public String getTemperature(){
@@ -81,10 +87,27 @@ public class LogItem {
 
     public void setDose(String dose) { this.dose = dose; }
 
+    private String calculateBrewRatio(){
+        if ((dose != null) && (shotWeight != null)) {
+            try {
+                double doseInt = Double.parseDouble(dose);
+                double shotWeightInt = Double.parseDouble(shotWeight);
+                double brewRatioNoRound = doseInt / shotWeightInt;
+                double percent = brewRatioNoRound * 100;
+                int brewRatioInt = (int) percent;
+                String brewRatio = "" + brewRatioInt + "%";
+                return brewRatio;
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return "47%";
+    }
+
 
     public void setDataFromArray(String[] data){
 
-        Log.v("Test3", "test");
         if(data.length == 6){
             shotTime = data[0];
             shotWeight = data[1];
