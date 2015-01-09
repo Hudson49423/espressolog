@@ -188,8 +188,8 @@ public class LogSQL extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<LogItem> getAllLogs() {
-        ArrayList<LogItem> logs = new ArrayList<LogItem>();
+    public LinkedList<LogItem> getAllLogs() {
+        LinkedList<LogItem> logs = new LinkedList<>();
 
         // 1. build the query
         String query = "SELECT  * FROM " + TABLE_LOGS;
@@ -211,7 +211,7 @@ public class LogSQL extends SQLiteOpenHelper {
                 log.setBrewRatio(cursor.getString(5));
                 log.setRating(cursor.getString(6));
                 log.setDose(cursor.getString(7));
-                logs.add(log);
+                logs.addFirst(log);
             } while (cursor.moveToNext());
         }
 

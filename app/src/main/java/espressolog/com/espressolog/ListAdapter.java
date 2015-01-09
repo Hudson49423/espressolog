@@ -19,6 +19,7 @@ public class ListAdapter extends ArrayAdapter<LogItem> {
         super(context, resource, logs);
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
