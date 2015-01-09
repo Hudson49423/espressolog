@@ -1,9 +1,14 @@
 package espressolog.com.espressolog;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridView;
+
+import java.util.ArrayList;
 
 
 public class DetailActivity extends ActionBarActivity {
@@ -12,6 +17,30 @@ public class DetailActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        // Create the db.
+        LogSQL db = new LogSQL(this);
+
+        // Get the log's position
+        Intent intent = getIntent();
+        int position = intent.getExtras().getInt("LogPosition");
+        Log.v("Position: ", "" + position);
+
+        // Get the log.
+        LogItem log = db.getAllLogs().get(position);
+        Log.v("Log id: ", "" + log.getId());
+
+        // Get the arrays
+        ArrayList<String[]> data = log.getDataInArray();
+
+        // Create the adapter.
+        GridAdapter mGridAdapter;
+        mGridAdapter = new GridAdapter(this, R.layout.grid_item_log, data);
+
+        // Get a reference to the GridView and attach the adapter to it.
+        GridView gridView = (GridView) findViewById(R.id.detail_grid);
+        gridView.setAdapter(mGridAdapter);
+
     }
 
 

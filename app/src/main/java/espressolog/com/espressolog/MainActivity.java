@@ -43,11 +43,10 @@ public class MainActivity extends ActionBarActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 Context context = getApplicationContext();
                 Intent intent = new Intent(context, DetailActivity.class);
-                String test = "test data";
-
-                intent.putExtra(Intent.EXTRA_TEXT, test);
+                intent.putExtra("LogPosition", position);
                 startActivity(intent);
             }
         });

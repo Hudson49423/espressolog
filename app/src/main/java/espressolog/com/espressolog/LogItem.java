@@ -2,6 +2,8 @@ package espressolog.com.espressolog;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+
 /**
  * Created by hudson49423 on 1/1/15.
  */
@@ -62,7 +64,7 @@ public class LogItem {
     public String getDose() { return dose; }
 
     public String toString(){
-        return "LOG";
+        return "Id: " + id;
     }
 
     public void setId(int id){
@@ -116,5 +118,23 @@ public class LogItem {
             rating = data[4];
             dose = data[5];
         }
+    }
+
+    public ArrayList<String[]> getDataInArray() {
+        ArrayList<String[]> returnArray = new ArrayList<>();
+
+        String[] a = {"Shot time", shotTime};
+        String[] a1 = {"Shot weight", shotWeight};
+        String[] a2 = {"Temperature", temperature};
+        String[] a3 = {"Rating", rating};
+        String[] a4 = {"Dose", dose};
+
+        returnArray.add(a);
+        returnArray.add(a1);
+        returnArray.add(a2);
+        returnArray.add(a3);
+        returnArray.add(a4);
+
+        return returnArray;
     }
 }

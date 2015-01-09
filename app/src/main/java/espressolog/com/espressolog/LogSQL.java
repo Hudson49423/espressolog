@@ -101,21 +101,23 @@ public class LogSQL extends SQLiteOpenHelper {
         db.close();
     }
 
-    public LogItem getLog(int id) {
+    public LogItem getLog(String shotTime) {
 
         // Get a reference to readable db.
         SQLiteDatabase db = this.getReadableDatabase();
 
         // Build query.
         Cursor cursor =
+
                 db.query(TABLE_LOGS, // Table
                 COLUMNS, // Column names
-                " id = ?", // Selections
-                new String[] { String.valueOf(id) }, // selections args.
+                " shotTime = ?", // Selections
+                new String[] { shotTime }, // selections args.
                 null, // group by
                 null, // having
                 null, // order by
                 null); // limit
+
 
         // If we got results get the first one.
         if (cursor != null) {
@@ -133,7 +135,8 @@ public class LogSQL extends SQLiteOpenHelper {
         log.setRating(cursor.getString(6));
         log.setDose(cursor.getString(7));
 
-        Log.v("Get log(" + id + ")", log.toString());
+        cursor.close();
+        db.close();
 
         return log;
     }
@@ -208,8 +211,6 @@ public class LogSQL extends SQLiteOpenHelper {
                 log.setBrewRatio(cursor.getString(5));
                 log.setRating(cursor.getString(6));
                 log.setDose(cursor.getString(7));
-
-                // Add book to books
                 logs.add(log);
             } while (cursor.moveToNext());
         }
