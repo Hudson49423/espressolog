@@ -142,7 +142,7 @@ public class LogSQL extends SQLiteOpenHelper {
     }
 
     // Updating single book
-    public int updateLog(LogItem log) {
+    public void updateLog(LogItem log) {
 
         // 1. get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
@@ -153,21 +153,18 @@ public class LogSQL extends SQLiteOpenHelper {
         values.put("shotTime", log.getShotTime()); // get shot time
         values.put("shotWeight", log.getShotWeight());
         values.put("temperature", log.getTemperature());
-        values.put("brewRating", log.getBrewRatio());
+        values.put("brewRatio", log.getBrewRatio());
         values.put("rating", log.getRating());
         values.put("dose", log.getDose());
 
         // 3. updating row
-        int i = db.update(TABLE_LOGS, //table
+        db.update(TABLE_LOGS, //table
                 values, // column/value
                 KEY_ID+" = ?", // selections
                 new String[] { String.valueOf(log.getId()) }); //selection args
 
         // 4. close
         db.close();
-
-        return i;
-
     }
 
     // Deleting single book

@@ -20,16 +20,6 @@ public class LogItem {
     public LogItem() {
     }
 
-    public LogItem(String shotTime, String shotWeight, String temperature, String brewRatio,
-                String date, String rating){
-        this.brewRatio = brewRatio;
-        this.temperature = temperature;
-        this.shotTime = shotTime;
-        this.shotWeight = shotWeight;
-        this.date = date;
-        this.rating = rating;
-    }
-
     public String getShotTime(){
         return shotTime;
     }
@@ -39,12 +29,7 @@ public class LogItem {
     }
 
     public String getBrewRatio(){
-        if (brewRatio == null) {
-            return calculateBrewRatio();
-        }
-        else {
-            return brewRatio;
-        }
+        return calculateBrewRatio();
     }
 
     public String getTemperature(){

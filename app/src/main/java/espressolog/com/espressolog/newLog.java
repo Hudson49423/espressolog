@@ -25,7 +25,6 @@ import java.util.Calendar;
 
 public class newLog extends ActionBarActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,16 +80,9 @@ public class newLog extends ActionBarActivity {
         }
         else {
 
-            // The file data will be saved in.
-            String filename = "myFile";
 
-            // They key which means this is a new log.
-            String newLogKey = "@";
-
-
-            // The date.
+            // The date. If the log is not new then we need to get it.
             String date = getDate();
-
             // The data entered in by the user.
             String[] data = new String[6];
             data[0] = s;
@@ -109,7 +101,7 @@ public class newLog extends ActionBarActivity {
                 LogItem logToAdd = new LogItem();
                 logToAdd.setDataFromArray(data);
 
-                // Add this log to the SQL database.
+                // Add this log to the SQL database or update it if it already exists.
                 db.addLog(logToAdd);
 
                 // Create a toast to notify the user if the log was saved.

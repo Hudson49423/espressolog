@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -17,11 +18,13 @@ import java.util.ArrayList;
 public class DetailActivity extends ActionBarActivity {
 
     private int position;
+    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        setTitle("Log Details");
 
         // Create the db.
         LogSQL db = new LogSQL(this);
@@ -71,9 +74,6 @@ public class DetailActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void edit(View view) {
-        // Edit the log.
-    }
 
     public void delete(View view){
         // Get a reference to the data base.
@@ -89,7 +89,8 @@ public class DetailActivity extends ActionBarActivity {
         Context context = this;
         String textToDisplay = "Log deleted";
         int timeToDisplay = Toast.LENGTH_SHORT;
-        Toast.makeText(context, textToDisplay, timeToDisplay);
+        Toast toast = Toast.makeText(context, textToDisplay, timeToDisplay);
+        toast.show();
 
         // Bring the user back to the main activity.
         Intent intent = new Intent(this, MainActivity.class);
