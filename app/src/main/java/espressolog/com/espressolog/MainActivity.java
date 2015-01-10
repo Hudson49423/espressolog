@@ -78,9 +78,8 @@ public class MainActivity extends ActionBarActivity {
 
         switch (id) {
             case R.id.action_settings:
-                return true;
-
-            case R.id.action_help:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
                 return true;
 
             case R.id.action_newLog:
