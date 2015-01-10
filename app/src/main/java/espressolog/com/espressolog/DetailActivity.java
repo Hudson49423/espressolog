@@ -1,17 +1,22 @@
 package espressolog.com.espressolog;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
 public class DetailActivity extends ActionBarActivity {
+
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +28,7 @@ public class DetailActivity extends ActionBarActivity {
 
         // Get the log's position
         Intent intent = getIntent();
-        int position = intent.getExtras().getInt("LogPosition");
+        position = intent.getExtras().getInt("LogPosition");
         Log.v("Position: ", "" + position);
 
         // Get the log.
@@ -64,5 +69,31 @@ public class DetailActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void edit(View view) {
+        // Edit the log.
+    }
+
+    public void delete(View view){
+        // Get a reference to the data base.
+        LogSQL db = new LogSQL(this);
+
+        // Get the log we wish to delete.
+        LogItem logToDelete = db.getAllLogs().get(position);
+
+        // Delete the log from the db.
+        db.deleteLog(logToDelete);
+
+        // Create toast to tell the user that the log was deleted.
+        Context context = this;
+        String textToDisplay = "Log deleted";
+        int timeToDisplay = Toast.LENGTH_SHORT;
+        Toast.makeText(context, textToDisplay, timeToDisplay);
+
+        // Bring the user back to the main activity.
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
     }
 }

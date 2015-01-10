@@ -28,6 +28,8 @@
     <string name="rating_text_placeholder">8/10</string>
     <string name="text_dose">Dose</string>
     <string name="dose_hint">Enter coffee dose here</string>
+    <string name="button_edit">Edit</string>
+    <string name="button_delete">Delete</string>
 
 
 </resources>
