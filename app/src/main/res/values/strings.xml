@@ -30,6 +30,7 @@
     <string name="dose_hint">Enter coffee dose here</string>
     <string name="button_edit">Edit</string>
     <string name="button_delete">Delete</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
 
 </resources>

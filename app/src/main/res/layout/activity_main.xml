@@ -28,4 +28,11 @@
         android:dividerHeight="1dp">
         </ListView>
 
+    <fragment
+        android:id="@+id/adFragment"
+        android:name="espressolog.com.espressolog.MainActivity$AdFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
 </RelativeLayout>
