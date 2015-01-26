@@ -29,6 +29,8 @@
     <string name="button_edit">Edit</string>
     <string name="button_delete">Delete</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="no_saved_logs_title">Welcome To Your Hub For Espresso Extraction Tracking!</string>
+    <string name="no_saved_logs_body">To start saving logs, just press the new symbol!</string>
 
 
 </resources>

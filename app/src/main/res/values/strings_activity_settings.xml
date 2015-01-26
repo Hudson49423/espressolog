@@ -4,27 +4,31 @@
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
+    <string name="pref_header_general">Log Options</string>
 
     <string name="pref_title_social_recommendations">Enable social recommendations</string>
     <string name="pref_description_social_recommendations">Recommendations for people to contact
         based on your message history
     </string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
+    <string name="pref_title_shot_time">Save shot times</string>
+    <string name="pref_description_shot_time">Log the time of extraction</string>
 
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
+    <string name="pref_title_shot_weight">Save shot weights</string>
+    <string name="pref_description_shot_weight">Log the weight of espresso after extraction</string>
+
+    <string name="pref_title_temperature">Save shot temperatures</string>
+    <string name="pref_description_temperature">Log the temperature of extraction</string>
+
+    <string name="pref_title_rating">Save your shot rating</string>
+    <string name="pref_description_rating">Log the rating of extraction</string>
+
+    <string name="pref_title_dose">Save shot weight before extraction</string>
+    <string name="pref_description_dose">Log the dose of espresso</string>
+
+    <string name="pref_title_grind">Save grind settings</string>
+    <string name="pref_description_grind">Log the grind setting of the extraction</string>
+
 
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
