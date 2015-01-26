@@ -10,10 +10,10 @@
         android:layout_height="wrap_content"
         android:text="@string/date_text_placeholder"
         android:textAllCaps="false"
-        android:textSize="22sp"/>
+        android:textSize="18sp"/>
 
     <TextView
-        android:id="@+id/text_shot_time"
+        android:id="@+id/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/shot_time_text_placeholder"
@@ -21,14 +21,14 @@
         android:textSize="18sp"
         android:layout_below="@id/text_date"/>
     <TextView
-        android:id="@+id/text_brew_ratio"
+        android:id="@+id/middle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/brew_ratio_text_placeholder"
         android:textSize="44sp"
         android:layout_centerHorizontal="true"/>
     <TextView
-        android:id="@+id/text_rating"
+        android:id="@+id/right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/rating_text_placeholder"

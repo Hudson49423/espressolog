@@ -34,22 +34,93 @@ public class ListAdapter extends ArrayAdapter<LogItem> {
         LogItem l = getItem(position);
 
         if (l != null) {
-            TextView dateText = (TextView) v.findViewById((R.id.text_date));
-            TextView shotTimeText = (TextView) v.findViewById(R.id.text_shot_time);
-            TextView ratingText = (TextView) v.findViewById(R.id.text_rating);
-            TextView brewRatioText = (TextView) v.findViewById(R.id.text_brew_ratio);
+            TextView title = (TextView) v.findViewById((R.id.text_date));
+            TextView subtitle = (TextView) v.findViewById(R.id.subtitle);
+            TextView middle = (TextView) v.findViewById(R.id.middle);
+            TextView right = (TextView) v.findViewById(R.id.right);
 
-            if (dateText != null) {
-                dateText.setText(l.getDate());
+            // Various booleans to see if a variable has already been used.
+            boolean shotWeight = false;
+            boolean shotTime = false;
+            boolean dose = false;
+            boolean rating = false;
+            boolean brewRatio = false;
+            boolean temperature = false;
+            boolean date = false;
+
+            if (title != null) {
+                if ((l.getShotWeight() != null) && (!l.getShotWeight().equals("null"))) {
+                    title.setText("Shot Weight: " + (l.getShotWeight()));
+                    shotWeight = true;
+                } else if ((l.getShotTime() != null) && (!l.getShotTime().equals("null"))) {
+                    title.setText("Shot Time: " + (l.getShotTime()));
+                    shotTime = true;
+                } else if ((l.getDose() != null) && (!l.getDose().equals("null"))) {
+                    title.setText("Dose: " + (l.getDose()));
+                    dose = true;
+                } else if ((l.getBrewRatio() != null) && (!l.getBrewRatio().equals("null"))) {
+                    title.setText("Brew Ratio: " + (l.getBrewRatio()));
+                    brewRatio = true;
+                } else if ((l.getTemperature() != null) && (!l.getTemperature().equals("null"))) {
+                    title.setText("Shot temperature: " + (l.getTemperature()));
+                    temperature = true;
+                }
             }
-            if (shotTimeText != null) {
-                shotTimeText.setText("Shot Time: " + (l.getShotTime()));
+
+            if (subtitle != null) {
+                if ((l.getShotWeight() != null) && (!l.getShotWeight().equals("null"))
+                        && !shotWeight) {
+                    subtitle.setText("Shot Weight: " + (l.getShotWeight()));
+                    shotWeight = true;
+                } else if ((l.getShotTime() != null) && (!l.getShotTime().equals("null"))
+                        && !shotTime) {
+                    subtitle.setText("Shot Time: " + (l.getShotTime()));
+                    shotTime = true;
+                } else if ((l.getDose() != null) && (!l.getDose().equals("null"))
+                        && !dose) {
+                    subtitle.setText("Dose: " + (l.getDose()));
+                    dose = true;
+                } else if ((l.getBrewRatio() != null) && (!l.getBrewRatio().equals("null"))
+                        && !brewRatio) {
+                    subtitle.setText("Brew Ratio: " + (l.getBrewRatio()));
+                    brewRatio = true;
+                } else if ((l.getTemperature() != null) && (!l.getTemperature().equals("null"))
+                        && !temperature) {
+                    subtitle.setText("Shot temperature: " + (l.getTemperature()));
+                    temperature = true;
+                }
             }
-            if (ratingText != null){
-                ratingText.setText((l.getRating()) + "/10");
+
+            if (middle != null) {
+                if ((l.getBrewRatio() != null) && (!l.getBrewRatio().equals("null"))
+                        && !brewRatio) {
+                    middle.setText("" + (l.getBrewRatio()));
+                    brewRatio = true;
+                } else if ((l.getTemperature() != null) && (!l.getTemperature().equals("null"))
+                        && !temperature) {
+                    middle.setText("" + (l.getTemperature()));
+                    temperature = true;
+                } else if ((l.getDate() != null) && (!l.getDate().equals("null"))
+                        && !temperature) {
+                    middle.setText("" + (l.getDate()));
+                    date = true;
+                }
             }
-            if (brewRatioText != null) {
-                brewRatioText.setText(l.getBrewRatio());
+
+            if (right != null) {
+                if ((l.getRating() != null) && (!l.getRating().equals("null"))) {
+                    right.setText("" + l.getRating() + "/10");
+                }
+                else if ((l.getBrewRatio() != null) && (!l.getBrewRatio().equals("null"))
+                        && !brewRatio) {
+                    right.setText(l.getBrewRatio());
+                } else if ((l.getTemperature() != null) && (!l.getTemperature().equals("null"))
+                        && !temperature) {
+                    right.setText(l.getTemperature());
+                } else if ((l.getDate() != null) && (!l.getDate().equals("null"))
+                        && !date) {
+                    right.setText("" + (l.getDate()));
+                }
             }
         }
 

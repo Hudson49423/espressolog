@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.preference.CheckBoxPreference;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedWriter;
@@ -32,6 +35,29 @@ public class newLog extends ActionBarActivity {
 
         // Set the title
         setTitle("New Log");
+
+        // Only set the fields we want to be visible
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!prefs.getBoolean("shot_time_checkbox", true)) {
+            findViewById(R.id.shot_time).setVisibility(TextView.GONE);
+            findViewById(R.id.shot_time_input).setVisibility(EditText.GONE);
+        }
+        if(!prefs.getBoolean("shot_weight_checkbox", true)) {
+            findViewById(R.id.weight).setVisibility(TextView.GONE);
+            findViewById(R.id.weight_input).setVisibility(EditText.GONE);
+        }
+        if(!prefs.getBoolean("temperature_checkbox", true)) {
+            findViewById(R.id.temperature).setVisibility(TextView.GONE);
+            findViewById(R.id.temperature_input).setVisibility(EditText.GONE);
+        }
+        if(!prefs.getBoolean("rating_checkbox", true)) {
+            findViewById(R.id.rating).setVisibility(TextView.GONE);
+            findViewById(R.id.rating_input).setVisibility(EditText.GONE);
+        }
+        if(!prefs.getBoolean("dose_checkbox", true)) {
+            findViewById(R.id.dose).setVisibility(TextView.GONE);
+            findViewById(R.id.dose_input).setVisibility(EditText.GONE);
+        }
     }
 
 
@@ -61,19 +87,59 @@ public class newLog extends ActionBarActivity {
 
     public void save(View view){
 
-        // Make sure that the user has entered all of the data needed to create a new log file.
-        EditText e = (EditText) findViewById(R.id.shot_time_input);
-        EditText e1 = (EditText) findViewById(R.id.weight_input);
-        EditText e2 = (EditText) findViewById(R.id.temperature_input);
-        EditText e3 = (EditText) findViewById(R.id.rating_input);
-        EditText e4 = (EditText) findViewById(R.id.dose_input);
-        String s = e.getText().toString();
-        String s1 = e1.getText().toString();
-        String s2 = e2.getText().toString();
-        String s3 = e3.getText().toString();
-        String s4 = e4.getText().toString();
+        LogItem logToAdd = new LogItem();
 
-        if ((s.isEmpty()) || (s1.isEmpty()) || (s2.isEmpty()) || (s3.isEmpty()) || (s4.isEmpty())) {
+        // Tells us if the user has filled all fields.
+        boolean hasBeenFilled = true;
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if(prefs.getBoolean("shot_time_checkbox", true)) {
+            String s = ((EditText)findViewById(R.id.shot_time_input)).getText().toString();
+            if (!s.isEmpty()) {
+                logToAdd.setShotTime(s);
+            }
+            else {
+                hasBeenFilled = false;
+            }
+        }
+        if(prefs.getBoolean("shot_weight_checkbox", true)) {
+            String s = ((EditText)findViewById(R.id.weight_input)).getText().toString();
+            if (!s.isEmpty()) {
+                logToAdd.setShotWeight(s);
+            }
+            else {
+                hasBeenFilled = false;
+            }
+        }
+        if(prefs.getBoolean("temperature_checkbox", true)) {
+            String s = ((EditText)findViewById(R.id.temperature_input)).getText().toString();
+            if (!s.isEmpty()) {
+                logToAdd.setTemperature(s);
+            }
+            else {
+                hasBeenFilled = false;
+            }
+        }
+        if(prefs.getBoolean("rating_checkbox", true)) {
+            String s = ((EditText)findViewById(R.id.rating_input)).getText().toString();
+            if (!s.isEmpty()) {
+                logToAdd.setRating(s);
+            }
+            else {
+                hasBeenFilled = false;
+            }
+        }
+        if(prefs.getBoolean("dose_checkbox", true)) {
+            String s = ((EditText)findViewById(R.id.dose_input)).getText().toString();
+            if (!s.isEmpty()) {
+                logToAdd.setDose(s);
+            }
+            else {
+                hasBeenFilled = false;
+            }
+        }
+
+        if (!hasBeenFilled) {
             Context context = getApplicationContext();
             CharSequence text = "Please complete all fields";
             int duration = Toast.LENGTH_SHORT;
@@ -81,29 +147,14 @@ public class newLog extends ActionBarActivity {
             toast.show();
         }
         else {
-
-
             // The date. If the log is not new then we need to get it.
-            String date = getDate();
-            // The data entered in by the user.
-            String[] data = new String[6];
-            data[0] = s;
-            data[1] = s1;
-            data[2] = s2;
-            data[3] = date;
-            data[4] = s3;
-            data[5] = s4;
-
-
+            logToAdd.setDate(getDate());
             try {
                 // Create the database.
                 LogSQL db = new LogSQL(this);
 
-                // Create the log to add.
-                LogItem logToAdd = new LogItem();
-                logToAdd.setDataFromArray(data);
-
                 // Add this log to the SQL database or update it if it already exists.
+                // We might get into trouble if some fields are filled or not.
                 db.addLog(logToAdd);
 
                 // Create a toast to notify the user if the log was saved.

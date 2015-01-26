@@ -18,7 +18,6 @@ import java.util.ArrayList;
 public class DetailActivity extends ActionBarActivity {
 
     private int position;
-    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
