@@ -43,7 +43,6 @@ public class ListAdapter extends ArrayAdapter<LogItem> {
             boolean shotWeight = false;
             boolean shotTime = false;
             boolean dose = false;
-            boolean rating = false;
             boolean brewRatio = false;
             boolean temperature = false;
             boolean date = false;
@@ -71,15 +70,12 @@ public class ListAdapter extends ArrayAdapter<LogItem> {
                 if ((l.getShotWeight() != null) && (!l.getShotWeight().equals("null"))
                         && !shotWeight) {
                     subtitle.setText("Shot Weight: " + (l.getShotWeight()));
-                    shotWeight = true;
                 } else if ((l.getShotTime() != null) && (!l.getShotTime().equals("null"))
                         && !shotTime) {
                     subtitle.setText("Shot Time: " + (l.getShotTime()));
-                    shotTime = true;
                 } else if ((l.getDose() != null) && (!l.getDose().equals("null"))
                         && !dose) {
                     subtitle.setText("Dose: " + (l.getDose()));
-                    dose = true;
                 } else if ((l.getBrewRatio() != null) && (!l.getBrewRatio().equals("null"))
                         && !brewRatio) {
                     subtitle.setText("Brew Ratio: " + (l.getBrewRatio()));
@@ -123,7 +119,6 @@ public class ListAdapter extends ArrayAdapter<LogItem> {
                 }
             }
         }
-
         return v;
     }
 }

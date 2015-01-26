@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
+    android:layout_height="wrap_content" tools:context="espressolog.com.espressolog.TimerFragment"
+    android:background="@color/PrimaryColorLight">
+
+    <TextView android:id="@+id/time_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25:00"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"/>
+
+
+    <RelativeLayout android:id="@+id/rel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time_display">
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <Button android:id="@+id/button_start"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Start"
+                    android:layout_weight=".5"/>
+
+                <Button android:id="@+id/button_stop"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Stop"
+                    android:layout_weight=".5"/>
+            </LinearLayout>
+    </RelativeLayout>
+
+    <Button android:id="@+id/button_reset"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rel"
+        android:text="Reset"/>
+
+</RelativeLayout>
