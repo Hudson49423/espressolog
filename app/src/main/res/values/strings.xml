@@ -37,6 +37,6 @@
     <string name="no_saved_logs_title">Looks like you haven\'t saved any logs!</string>
     <string name="no_saved_logs_body">To start, go to settings to decide what you wish to log,
                                         then create a new log by pressing the new symbol!</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="detail_title">Log Details</string>
 
 </resources>

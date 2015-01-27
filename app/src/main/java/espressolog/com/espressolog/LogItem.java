@@ -113,23 +113,42 @@ public class LogItem {
     public ArrayList<String[]> getDataInArray() {
         ArrayList<String[]> returnArray = new ArrayList<>();
 
-        String[] a = {"Shot time", shotTime};
-        String[] a1 = {"Shot weight", shotWeight};
-        String[] a2 = {"Temperature", temperature};
-        String[] a3 = {"Rating", rating};
-        String[] a4 = {"Dose", dose};
-        String[] a5 = {"Grind Setting", grind};
-        String[] a6 = {"Notes", notes};
 
-        returnArray.add(a);
-        returnArray.add(a1);
-        returnArray.add(a2);
-        returnArray.add(a3);
-        returnArray.add(a4);
-        returnArray.add(a5);
-        returnArray.add(a6);
+        if (shotTime != null) {
+            String[] a = {"Shot time", shotTime};
+            returnArray.add(a);
 
+        }
+        if (shotWeight != null) {
+            String[] a = {"Shot weight", shotWeight};
+            returnArray.add(a);
 
+        }
+        if (temperature != null) {
+            String[] a = {"Temperature", temperature};
+            returnArray.add(a);
+
+        }
+        if (rating != null) {
+            String[] a = {"Rating", rating};
+            returnArray.add(a);
+
+        }
+        if (dose != null) {
+            String[] a = {"Dose", dose};
+            returnArray.add(a);
+
+        }
+        if (grind != null) {
+            String[] a = {"Grind Setting", grind};
+            returnArray.add(a);
+
+        }
+        if (notes != null) {
+            String[] a = {"Notes", notes};
+            returnArray.add(a);
+
+        }
         return returnArray;
     }
 }
