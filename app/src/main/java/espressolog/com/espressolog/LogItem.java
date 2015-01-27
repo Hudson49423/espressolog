@@ -1,7 +1,5 @@
 package espressolog.com.espressolog;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 /**
@@ -107,7 +105,7 @@ public class LogItem {
                 e.printStackTrace();
             }
         }
-        return "47%";
+        return null;
     }
 
     public ArrayList<String[]> getDataInArray() {
