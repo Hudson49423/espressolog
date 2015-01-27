@@ -3,6 +3,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView android:id="@+id/help_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_saved_logs_title"
+        android:textSize="20sp"
+        android:textColor="@color/PrimaryBlue"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
+
+    <TextView android:id="@+id/help_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/help_title"
+        android:textSize="18sp"
+        android:text="@string/no_saved_logs_body"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"/>
+
     <ListView android:id="@+id/list_view_log"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

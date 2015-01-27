@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -36,28 +37,37 @@ public class MainActivity extends ActionBarActivity {
 
         LinkedList<LogItem> logsFromSQL = db.getAllLogs();
 
-        ListAdapter mLogAdapter;
-        mLogAdapter = new ListAdapter(
-                //the context
-                this,
-                // the id of the list item layout.
-                R.layout.list_item_log,
-                // The raw data.
-                logsFromSQL);
+        TextView t1 = (TextView) findViewById(R.id.help_title);
+        TextView t2 = (TextView) findViewById(R.id.help_body);
+        // Check to see if the user has any saved logs.
+        if (logsFromSQL.size() != 0) {
+            t1.setVisibility(TextView.GONE);
+            t2.setVisibility(TextView.GONE);
 
-        // Get a reference to the ListView and attach this adapter to it.
-        ListView listView = (ListView) findViewById(R.id.list_view_log);
-        listView.setAdapter(mLogAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            ListAdapter mLogAdapter;
+            mLogAdapter = new ListAdapter(
+                    //the context
+                    this,
+                    // the id of the list item layout.
+                    R.layout.list_item_log,
+                    // The raw data.
+                    logsFromSQL);
 
-                Context context = getApplicationContext();
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("LogPosition", position);
-                startActivity(intent);
-            }
-        });
+
+            // Get a reference to the ListView and attach this adapter to it.
+            ListView listView = (ListView) findViewById(R.id.list_view_log);
+            listView.setAdapter(mLogAdapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Context context = getApplicationContext();
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtra("LogPosition", position);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override
