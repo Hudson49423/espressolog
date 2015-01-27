@@ -16,6 +16,8 @@ public class LogItem {
     private String rating;
     private int id;
     private String dose;
+    private String grind;
+    private String notes;
 
     public LogItem() {
     }
@@ -46,6 +48,14 @@ public class LogItem {
 
     public int getId(){ return id; }
 
+    public String getGrind(){
+        return grind;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
     public String getDose() { return dose; }
 
     public String toString(){
@@ -74,6 +84,14 @@ public class LogItem {
 
     public void setDose(String dose) { this.dose = dose; }
 
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public void setGrind(String grind) {
+        this.grind = grind;
+    }
+
     private String calculateBrewRatio(){
         if ((dose != null) && (shotWeight != null)) {
             try {
@@ -92,19 +110,6 @@ public class LogItem {
         return "47%";
     }
 
-
-    public void setDataFromArray(String[] data){
-
-        if(data.length == 6){
-            shotTime = data[0];
-            shotWeight = data[1];
-            temperature = data[2];
-            date = data[3];
-            rating = data[4];
-            dose = data[5];
-        }
-    }
-
     public ArrayList<String[]> getDataInArray() {
         ArrayList<String[]> returnArray = new ArrayList<>();
 
@@ -113,12 +118,17 @@ public class LogItem {
         String[] a2 = {"Temperature", temperature};
         String[] a3 = {"Rating", rating};
         String[] a4 = {"Dose", dose};
+        String[] a5 = {"Grind Setting", grind};
+        String[] a6 = {"Notes", notes};
 
         returnArray.add(a);
         returnArray.add(a1);
         returnArray.add(a2);
         returnArray.add(a3);
         returnArray.add(a4);
+        returnArray.add(a5);
+        returnArray.add(a6);
+
 
         return returnArray;
     }

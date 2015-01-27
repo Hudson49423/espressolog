@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class LogSQL extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     // The database name.
     private static final String DATABASE_NAME = "LogDB";
 
@@ -36,7 +36,9 @@ public class LogSQL extends SQLiteOpenHelper {
                 "temperature TEXT, " +
                 "brewRatio TEXT, " +
                 "rating Text, " +
-                "dose TEXT )";
+                "dose TEXT, " +
+                "grind TEXT, " +
+                "notes TEXT)";
 
         // Create the logs table.
         db.execSQL(CREATE_LOG_TABLE);
@@ -65,6 +67,8 @@ public class LogSQL extends SQLiteOpenHelper {
     private static final String KEY_BREWRATIO = "brewRatio";
     private static final String KEY_RATING = "rating";
     private static final String KEY_DOSE = "dose";
+    private static final String KEY_GRIND = "grind";
+    private static final String KEY_NOTES = "notes";
 
     private static final String[] COLUMNS = {
                                 KEY_ID,
@@ -74,7 +78,9 @@ public class LogSQL extends SQLiteOpenHelper {
                                 KEY_TEMPERATURE,
                                 KEY_BREWRATIO,
                                 KEY_RATING,
-                                KEY_DOSE};
+                                KEY_DOSE,
+                                KEY_GRIND,
+                                KEY_NOTES};
 
     public void addLog(LogItem log){
         Log.v("addLog", log.toString());
@@ -91,6 +97,8 @@ public class LogSQL extends SQLiteOpenHelper {
         values.put(KEY_BREWRATIO, log.getBrewRatio());
         values.put(KEY_RATING, log.getRating());
         values.put(KEY_DOSE, log.getDose());
+        values.put(KEY_GRIND, log.getGrind());
+        values.put(KEY_NOTES, log.getNotes());
 
         // Insert into db.
         db.insert(TABLE_LOGS, // Table
@@ -208,6 +216,8 @@ public class LogSQL extends SQLiteOpenHelper {
                 log.setBrewRatio(cursor.getString(5));
                 log.setRating(cursor.getString(6));
                 log.setDose(cursor.getString(7));
+                log.setGrind(cursor.getString(8));
+                log.setNotes(cursor.getString(9));
                 logs.addFirst(log);
             } while (cursor.moveToNext());
         }

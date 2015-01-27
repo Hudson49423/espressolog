@@ -58,6 +58,14 @@ public class newLog extends ActionBarActivity {
             findViewById(R.id.dose).setVisibility(TextView.GONE);
             findViewById(R.id.dose_input).setVisibility(EditText.GONE);
         }
+        if(!prefs.getBoolean("grind_checkbox", true)) {
+            findViewById(R.id.grind).setVisibility(TextView.GONE);
+            findViewById(R.id.grind_input).setVisibility(EditText.GONE);
+        }
+        if(!prefs.getBoolean("notes_checkbox", true)) {
+            findViewById(R.id.notes).setVisibility(TextView.GONE);
+            findViewById(R.id.notes_input).setVisibility(EditText.GONE);
+        }
     }
 
 
@@ -138,12 +146,34 @@ public class newLog extends ActionBarActivity {
                 hasBeenFilled = false;
             }
         }
+        if(prefs.getBoolean("grind_checkbox", true)) {
+            String s = ((EditText)findViewById(R.id.grind_input)).getText().toString();
+            if (!s.isEmpty()) {
+                logToAdd.setGrind(s);
+            }
+            else {
+                hasBeenFilled = false;
+            }
+        }
+
+        if(prefs.getBoolean("notes_checkbox", true)) {
+            String s = ((EditText)findViewById(R.id.notes_input)).getText().toString();
+            if (!s.isEmpty()) {
+                logToAdd.setNotes(s);
+            }
+            else {
+                hasBeenFilled = false;
+            }
+        }
 
         if (!hasBeenFilled) {
             Context context = getApplicationContext();
             CharSequence text = "Please complete all fields";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
+            toast = Toast.makeText(context, "To remove a field go to settings", duration);
             toast.show();
         }
         else {

@@ -16,7 +16,11 @@
     <string name="button_cancel">Cancel</string>
     <string name="button_save">Save</string>
     <string name="text_rating">Rating</string>
-    <string name="rating_hint">Please enter your rating (out of 10)</string>
+    <string name="text_grind">Grind setting</string>
+    <string name="grind_hint">Enter the grind setting used</string>
+    <string name="text_notes">Additional notes</string>
+    <string name="notes_hint">Enter any additional notes</string>
+    <string name="rating_hint">Enter your rating (out of 10)</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="heading">Date Created</string>
     <string name="heading2">NA</string>

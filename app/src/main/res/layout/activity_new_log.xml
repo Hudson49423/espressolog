@@ -3,7 +3,20 @@
     android:layout_height="match_parent"
     tools:context="espressolog.com.espressolog.newLog">
 
+    <TextView android:id="@+id/dose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_dose"/>
+    <EditText android:id="@+id/dose_input"
+        android:layout_below="@id/dose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/dose_hint"
+        android:inputType="number"
+        android:paddingBottom="16dp"/>
+
     <TextView android:id="@+id/shot_time"
+        android:layout_below="@id/dose_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/shot_time_text"/>
@@ -55,45 +68,60 @@
         android:inputType="number"
         android:paddingBottom="16dp"/>
 
-    <TextView android:id="@+id/dose"
+    <TextView android:id="@+id/grind"
         android:layout_below="@id/rating_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_dose"/>
-    <EditText android:id="@+id/dose_input"
-        android:layout_below="@id/dose"
+        android:text="@string/text_grind"/>
+    <EditText android:id="@+id/grind_input"
+        android:layout_below="@id/grind"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/dose_hint"
+        android:hint="@string/grind_hint"
         android:inputType="number"
+        android:paddingBottom="16dp"/>
+
+    <TextView android:id="@+id/notes"
+        android:layout_below="@id/grind_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_notes"/>
+    <EditText android:id="@+id/notes_input"
+        android:layout_below="@id/notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/notes_hint"
+        android:inputType="text"
         android:paddingBottom="16dp"/>
 
 
     <Button android:id="@+id/button_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dose_input"
+        android:layout_above="@id/line"
         android:text="@string/button_save"
         android:onClick="save"
         android:textColor="@color/TextColor"
         android:background="@color/PrimaryColor"/>
 
+    <Button android:id="@+id/button_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_cancel"
+        android:onClick="cancel"
+        android:textColor="@color/TextColor"
+        android:background="@color/PrimaryColor"
+        android:layout_alignParentBottom="true"/>
+
+
     <View android:id="@+id/line"
         android:layout_width="fill_parent"
         android:layout_height="4dp"
         android:background="@color/TextColor"
-        android:layout_below="@id/button_save"
+        android:layout_above="@id/button_cancel"
         android:paddingTop="6dp"
         android:paddingBottom="6dp"/>
 
-    <Button android:id="@+id/button_cancel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/line"
-        android:text="@string/button_cancel"
-        android:onClick="cancel"
-        android:textColor="@color/TextColor"
-        android:background="@color/PrimaryColor"/>
 
 
 </RelativeLayout>
