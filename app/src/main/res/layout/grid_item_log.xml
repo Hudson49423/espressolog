@@ -2,19 +2,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-
-
     <TextView android:id="@+id/grid_text_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:text="Heading"/>
+        android:text="Heading"
+        android:layout_centerHorizontal="true"/>
+
+    <View android:id="@+id/line"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/PrimaryColor"
+        android:layout_below="@id/grid_text_heading"/>
 
     <TextView android:id="@+id/grid_text_information"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:layout_below="@id/grid_text_heading"
-        android:text="Info"/>
+        android:layout_below="@id/line"
+        android:text="Info"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
