@@ -53,6 +53,12 @@ public class TimerFragment extends Fragment {
         keepGoing = false;
     }
 
+    @Override
+    public void onPause(){
+        super.onPause();
+        keepGoing = false;
+    }
+
 
     public void startTimer() {
         keepGoing = true;
@@ -85,6 +91,9 @@ public class TimerFragment extends Fragment {
 
     // ---------------------------------------------------------------------------------------------
 
+    /**
+     * Acts as a very simple stop watch. Only deals with whole seconds.
+     */
     public class StopWatch {
         private long startTime;
 
