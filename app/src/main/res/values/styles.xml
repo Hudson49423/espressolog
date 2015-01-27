@@ -15,6 +15,6 @@
     </style>
 
     <style name="MyActionBar.Text" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/TextColor</item>
+        <item name="android:textColor">@color/PrimaryBlue</item>
     </style>
 </resources>

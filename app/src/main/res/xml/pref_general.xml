@@ -30,4 +30,9 @@
         android:title="@string/pref_title_grind"
         android:summary="@string/pref_description_grind"
         android:defaultValue="false" />
+    <CheckBoxPreference
+        android:key="notes_checkbox"
+        android:title="@string/pref_title_notes"
+        android:summary="@string/pref_description_notes"
+        android:defaultValue="true" />
 </PreferenceScreen>

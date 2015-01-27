@@ -22,4 +22,7 @@
     <string name="pref_title_grind">Save grind settings</string>
     <string name="pref_description_grind">Log the grind setting for shot</string>
 
+    <string name="pref_title_notes">Save your notes for the shot</string>
+    <string name="pref_description_notes">Log notes you write for each extraction</string>
+
 </resources>

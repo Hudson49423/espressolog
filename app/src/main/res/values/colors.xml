@@ -8,4 +8,5 @@
     <color name="SecondaryText">#727272</color>
     <color name="DividerColor">#B6B6B6</color>
     <color name="TextColor">#FFFFFF</color>
+    <color name="PrimaryBlue">#4b77be</color>
 </resources>

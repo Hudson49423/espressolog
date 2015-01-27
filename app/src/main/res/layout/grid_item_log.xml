@@ -12,7 +12,7 @@
     <View android:id="@+id/line"
         android:layout_width="fill_parent"
         android:layout_height="2dp"
-        android:background="@color/PrimaryColor"
+        android:background="@color/PrimaryBlue"
         android:layout_below="@id/grid_text_heading"/>
 
     <TextView android:id="@+id/grid_text_information"

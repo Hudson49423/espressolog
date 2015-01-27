@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/shot_time_hint"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:paddingBottom="16dp"/>
 
     <TextView android:id="@+id/weight"
         android:layout_below="@id/shot_time_input"
@@ -24,7 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/weight_hint"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:paddingBottom="16dp"/>
 
     <TextView android:id="@+id/temperature"
         android:layout_below="@id/weight_input"
@@ -36,7 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/temperature_hint"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:paddingBottom="16dp"/>
 
 
     <TextView android:id="@+id/rating"
@@ -49,7 +52,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/rating_hint"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:paddingBottom="16dp"/>
 
     <TextView android:id="@+id/dose"
         android:layout_below="@id/rating_input"
@@ -61,7 +65,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/dose_hint"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:paddingBottom="16dp"/>
 
 
     <Button android:id="@+id/button_save"
@@ -69,14 +74,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/dose_input"
         android:text="@string/button_save"
-        android:onClick="save"/>
+        android:onClick="save"
+        android:textColor="@color/TextColor"
+        android:background="@color/PrimaryColor"/>
+
+    <View android:id="@+id/line"
+        android:layout_width="fill_parent"
+        android:layout_height="4dp"
+        android:background="@color/TextColor"
+        android:layout_below="@id/button_save"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"/>
 
     <Button android:id="@+id/button_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button_save"
+        android:layout_below="@id/line"
         android:text="@string/button_cancel"
-        android:onClick="cancel"/>
+        android:onClick="cancel"
+        android:textColor="@color/TextColor"
+        android:background="@color/PrimaryColor"/>
 
 
 </RelativeLayout>
