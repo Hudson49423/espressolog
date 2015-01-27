@@ -9,9 +9,6 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-
-
 public class TimerFragment extends Fragment {
 
     private boolean keepGoing;
@@ -34,31 +31,30 @@ public class TimerFragment extends Fragment {
         RelativeLayout relativeLayout = (RelativeLayout) inflater.inflate(R.layout.fragment_timer, container, false);
         Button start = (Button) relativeLayout.findViewById(R.id.button_start);
         Button stop = (Button) relativeLayout.findViewById(R.id.button_stop);
-        Button reset = (Button) relativeLayout.findViewById(R.id.button_reset);
         textView = (TextView) relativeLayout.findViewById(R.id.time_display);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startTimer(null);
+                startTimer();
             }
         });
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stopTimer(null);
-            }
-        });
-        reset.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                resetTimer(null);
+                stopTimer();
             }
         });
         return relativeLayout;
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        keepGoing = false;
+    }
 
-    public void startTimer(View view) {
+
+    public void startTimer() {
         keepGoing = true;
         Thread thread = new Thread() {
             @Override
@@ -74,30 +70,26 @@ public class TimerFragment extends Fragment {
                             }
                         });
                     }
+                    //timer.stop();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                timer.stop();
             }
         };
         thread.start();
     }
 
-    public void stopTimer(View view) {
+    public void stopTimer() {
         keepGoing = false;
     }
 
-    public void resetTimer(View view) {
-        stopTimer(null);
-        timer.reset();
-    }
+    // ---------------------------------------------------------------------------------------------
 
     public class StopWatch {
         private long startTime;
-        private long stopTime;
+
 
         public StopWatch() {
-            stopTime = 0;
         }
 
         public void start() {
@@ -105,48 +97,13 @@ public class TimerFragment extends Fragment {
         }
 
         public long getElapsedTime() {
-            return (System.currentTimeMillis() - startTime) + stopTime;
-        }
-
-        public void reset() {
-            stopTime = 0;
-        }
-
-        public void stop(){
-            stopTime = getElapsedTime();
+            return (System.currentTimeMillis() - startTime);
         }
 
         public String getFormatedTime(){
             long time = getElapsedTime();
-
-            try {
-                if(time < 1000) {
-                    String seconds = "00";
-                    String colon = ":";
-                    String milis = "" + time;
-                    String end = milis.substring(0, 2);
-                    return seconds + colon + end;
-
-                }
-                else if (time < 10000) {
-                    String timeString = "" + time;
-                    String start = "0";
-                    String second = "" + timeString.substring(0,1);
-                    String colon = ":";
-                    String end = timeString.substring(2, 4);
-                    return start + second + colon + end;
-                }
-                else {
-                    String timeString = "" + time;
-                    String start = timeString.substring(0,2);
-                    String colon = ":";
-                    String end = timeString.substring(3,5);
-                    return start + colon + end;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                return "ERROR";
-            }
+            long seconds = time / 1000;
+            return "" + seconds;
         }
     }
 }
