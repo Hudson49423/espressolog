@@ -1,11 +1,14 @@
 package espressolog.com.espressolog;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -98,13 +101,23 @@ public class MainActivity extends ActionBarActivity {
                 return true;
 
             case R.id.action_clear:
-                LogSQL db = new LogSQL(this);
-                db.clearAll();
-                // Refresh the activity.
-                Intent refresh = new Intent(this, MainActivity.class);
-                startActivity(refresh);
-                finish();
-                return true;
+                // Make sure the user wants to delete logs.
+                TextView msg = new TextView(this);
+                msg.setText("Are you sure?");
+                msg.setPadding(20, 10, 10, 10);
+                msg.setGravity(Gravity.CENTER);
+                msg.setTextSize(20);
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setView(msg);
+                alertDialogBuilder.setPositiveButton("Delete All Logs", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteAllLogs();
+                    }
+                });
+                alertDialogBuilder.setNegativeButton("Cancel", null);
+                alertDialogBuilder.show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -114,6 +127,18 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, newLog.class);
         startActivity(intent);
     }
+
+    public void deleteAllLogs() {
+        LogSQL db = new LogSQL(this);
+        db.clearAll();
+        // Refresh the activity.
+        Intent refresh = new Intent(this, MainActivity.class);
+        startActivity(refresh);
+        finish();
+    }
+
+
+    // ---------------------------------------------------------------------------------------------
 
     public static class AdFragment extends Fragment {
 
