@@ -1,112 +1,7 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="espressolog.com.espressolog.newLog"
-    android:nestedScrollingEnabled="true">
-
-    <TextView android:id="@+id/dose"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/text_dose"/>
-    <EditText android:id="@+id/dose_input"
-        android:layout_below="@id/dose"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/dose_hint"
-        android:inputType="number"
-        android:paddingBottom="16dp"/>
-
-    <TextView android:id="@+id/shot_time"
-        android:layout_below="@id/dose_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/shot_time_text"/>
-    <EditText android:id="@+id/shot_time_input"
-        android:layout_below="@id/shot_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/shot_time_hint"
-        android:inputType="number"
-        android:paddingBottom="16dp"/>
-
-    <TextView android:id="@+id/weight"
-        android:layout_below="@id/shot_time_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/weight_text"/>
-    <EditText android:id="@+id/weight_input"
-        android:layout_below="@id/weight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/weight_hint"
-        android:inputType="number"
-        android:paddingBottom="16dp"/>
-
-    <TextView android:id="@+id/temperature"
-        android:layout_below="@id/weight_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/temperature_text"/>
-    <EditText android:id="@+id/temperature_input"
-        android:layout_below="@id/temperature"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/temperature_hint"
-        android:inputType="number"
-        android:paddingBottom="16dp"/>
-
-
-    <TextView android:id="@+id/rating"
-        android:layout_below="@id/temperature_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/text_rating"/>
-    <EditText android:id="@+id/rating_input"
-        android:layout_below="@id/rating"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/rating_hint"
-        android:inputType="number"
-        android:paddingBottom="16dp"/>
-
-    <TextView android:id="@+id/volume"
-        android:layout_below="@id/rating_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/text_volume"/>
-    <EditText android:id="@+id/volume_input"
-        android:layout_below="@id/volume"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/volume_hint"
-        android:inputType="text"
-        android:paddingBottom="16dp"/>
-
-    <TextView android:id="@+id/grind"
-        android:layout_below="@id/volume_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/text_grind"/>
-    <EditText android:id="@+id/grind_input"
-        android:layout_below="@id/grind"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/grind_hint"
-        android:inputType="number"
-        android:paddingBottom="16dp"/>
-
-    <TextView android:id="@+id/notes"
-        android:layout_below="@id/grind_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/text_notes"/>
-    <EditText android:id="@+id/notes_input"
-        android:layout_below="@id/notes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/notes_hint"
-        android:inputType="text"
-        android:paddingBottom="16dp"/>
+<RelativeLayout
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <Button android:id="@+id/button_save"
@@ -136,6 +31,137 @@
         android:paddingTop="6dp"
         android:paddingBottom="6dp"/>
 
+    <ScrollView
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_above="@id/button_save">
+
+        <RelativeLayout android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView android:id="@+id/dose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_dose"
+                android:textColor="@color/PrimaryBlue"
+                android:textSize="18sp"/>
+            <EditText android:id="@+id/dose_input"
+                android:layout_below="@id/dose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/dose_hint"
+                android:inputType="number"
+                android:paddingBottom="16dp"/>
+
+            <TextView android:id="@+id/shot_time"
+                android:layout_below="@id/dose_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/shot_time_text"
+                android:textColor="@color/PrimaryBlue"
+                android:textSize="18sp"/>
+            <EditText android:id="@+id/shot_time_input"
+                android:layout_below="@id/shot_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/shot_time_hint"
+                android:inputType="number"
+                android:paddingBottom="16dp"/>
+
+            <TextView android:id="@+id/weight"
+                android:layout_below="@id/shot_time_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/weight_text"
+                android:textColor="@color/PrimaryBlue"
+                android:textSize="18sp"/>
+            <EditText android:id="@+id/weight_input"
+                android:layout_below="@id/weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/weight_hint"
+                android:inputType="number"
+                android:paddingBottom="16dp"/>
+
+            <TextView android:id="@+id/temperature"
+                android:layout_below="@id/weight_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/temperature_text"
+                android:textColor="@color/PrimaryBlue"
+                android:textSize="18sp"/>
+            <EditText android:id="@+id/temperature_input"
+                android:layout_below="@id/temperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/temperature_hint"
+                android:inputType="number"
+                android:paddingBottom="16dp"/>
+
+
+            <TextView android:id="@+id/rating"
+                android:layout_below="@id/temperature_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_rating"
+                android:textColor="@color/PrimaryBlue"
+                android:textSize="18sp"/>
+            <EditText android:id="@+id/rating_input"
+                android:layout_below="@id/rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/rating_hint"
+                android:inputType="number"
+                android:paddingBottom="16dp"/>
+
+            <TextView android:id="@+id/volume"
+                android:layout_below="@id/rating_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_volume"
+                android:textColor="@color/PrimaryBlue"
+                android:textSize="18sp"/>
+            <EditText android:id="@+id/volume_input"
+                android:layout_below="@id/volume"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/volume_hint"
+                android:inputType="number"
+                android:paddingBottom="16dp"/>
+
+            <TextView android:id="@+id/grind"
+                android:layout_below="@id/volume_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_grind"
+                android:textColor="@color/PrimaryBlue"
+                android:textSize="18sp"/>
+            <EditText android:id="@+id/grind_input"
+                android:layout_below="@id/grind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/grind_hint"
+                android:inputType="number"
+                android:paddingBottom="16dp"/>
+
+            <TextView android:id="@+id/notes"
+                android:layout_below="@id/grind_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_notes"
+                android:textColor="@color/PrimaryBlue"
+                android:textSize="18sp"/>
+            <EditText android:id="@+id/notes_input"
+                android:layout_below="@id/notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/notes_hint"
+                android:inputType="text"
+                android:paddingBottom="16dp"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 
 </RelativeLayout>
