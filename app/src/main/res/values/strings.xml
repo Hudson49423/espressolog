@@ -38,7 +38,7 @@
     <string name="button_delete">Delete</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="no_saved_logs_title">Looks like you haven\'t saved any logs!</string>
-    <string name="no_saved_logs_body">To start, go to settings to decide what you wish to log,
+    <string name="no_saved_logs_body">To start, go to settings and decide what you wish to log,
                                         then create a new log by pressing the new symbol!</string>
     <string name="detail_title">Log Details</string>
 

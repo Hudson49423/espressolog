@@ -16,8 +16,8 @@
     <string name="pref_title_rating">Save your shot rating</string>
     <string name="pref_description_rating">Log your rating of the shot</string>
 
-    <string name="pref_title_dose">Log the dose of espresso</string>
-    <string name="pref_description_dose">Save shot weight before extraction</string>
+    <string name="pref_title_dose">Save the dose of espresso</string>
+    <string name="pref_description_dose">Log the shot weight before extraction</string>
 
     <string name="pref_title_grind">Save grind settings</string>
     <string name="pref_description_grind">Log the grind setting for shot</string>

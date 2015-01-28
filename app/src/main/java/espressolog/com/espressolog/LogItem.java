@@ -104,6 +104,7 @@ public class LogItem {
                 double percent = brewRatioNoRound * 100;
                 int brewRatioInt = (int) percent;
                 String brewRatio = "" + brewRatioInt + "%";
+                setBrewRatio(brewRatio);
                 return brewRatio;
             }
             catch (Exception e){
@@ -159,6 +160,11 @@ public class LogItem {
         }
         if (volume != null) {
             String[] a = {"Volume", volume + "ml"};
+            returnArray.add(a);
+
+        }
+        if (brewRatio != null) {
+            String[] a = {"Brew Ratio", brewRatio};
             returnArray.add(a);
 
         }
