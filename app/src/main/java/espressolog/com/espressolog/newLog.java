@@ -66,6 +66,10 @@ public class newLog extends ActionBarActivity {
             findViewById(R.id.notes).setVisibility(TextView.GONE);
             findViewById(R.id.notes_input).setVisibility(EditText.GONE);
         }
+        if(!prefs.getBoolean("volume_checkbox", true)) {
+            findViewById(R.id.volume).setVisibility(TextView.GONE);
+            findViewById(R.id.volume_input).setVisibility(EditText.GONE);
+        }
     }
 
 
@@ -160,6 +164,15 @@ public class newLog extends ActionBarActivity {
             String s = ((EditText)findViewById(R.id.notes_input)).getText().toString();
             if (!s.isEmpty()) {
                 logToAdd.setNotes(s);
+            }
+            else {
+                hasBeenFilled = false;
+            }
+        }
+        if(prefs.getBoolean("volume_checkbox", true)) {
+            String s = ((EditText)findViewById(R.id.volume_input)).getText().toString();
+            if (!s.isEmpty()) {
+                logToAdd.setVolume(s);
             }
             else {
                 hasBeenFilled = false;

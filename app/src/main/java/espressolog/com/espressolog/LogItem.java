@@ -16,6 +16,7 @@ public class LogItem {
     private String dose;
     private String grind;
     private String notes;
+    private String volume;
 
     public LogItem() {
     }
@@ -56,6 +57,8 @@ public class LogItem {
 
     public String getDose() { return dose; }
 
+    public String getVolume(){ return volume;}
+
     public String toString(){
         return "Id: " + id;
     }
@@ -90,6 +93,8 @@ public class LogItem {
         this.grind = grind;
     }
 
+    public void setVolume(String volume) { this.volume = volume; }
+
     private String calculateBrewRatio(){
         if ((dose != null) && (shotWeight != null)) {
             try {
@@ -111,6 +116,11 @@ public class LogItem {
     public ArrayList<String[]> getDataInArray() {
         ArrayList<String[]> returnArray = new ArrayList<>();
 
+        if (date != null) {
+            String[] a = {"Date", date};
+            returnArray.add(a);
+
+        }
 
         if (shotTime != null) {
             String[] a = {"Shot time", shotTime};
@@ -144,6 +154,11 @@ public class LogItem {
         }
         if (notes != null) {
             String[] a = {"Notes", notes};
+            returnArray.add(a);
+
+        }
+        if (volume != null) {
+            String[] a = {"Volume", volume + "ml"};
             returnArray.add(a);
 
         }

@@ -25,12 +25,14 @@
     <string name="heading">Date Created</string>
     <string name="heading2">NA</string>
     <string name="heading3">Rating</string>
-    <string name="date_text_placeholder">12/30</string>
+    <string name="date_text_placeholder">NA</string>
     <string name="brew_ratio_text_placeholder">NA</string>
-    <string name="shot_time_text_placeholder">Shot time: 27s</string>
+    <string name="shot_time_text_placeholder">NA</string>
     <string name="rating_text_placeholder">NA</string>
     <string name="text_dose">Dose</string>
     <string name="dose_hint">Enter coffee dose here</string>
+    <string name="text_volume">Volume</string>
+    <string name="volume_hint">Enter shot volume (in mL)</string>
     <string name="button_edit">Edit</string>
     <string name="button_delete">Delete</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>

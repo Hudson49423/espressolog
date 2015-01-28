@@ -35,4 +35,9 @@
         android:title="@string/pref_title_notes"
         android:summary="@string/pref_description_notes"
         android:defaultValue="true" />
+    <CheckBoxPreference
+        android:key="volume_checkbox"
+        android:title="@string/pref_title_volume"
+        android:summary="@string/pref_description_volume"
+        android:defaultValue="true" />
 </PreferenceScreen>

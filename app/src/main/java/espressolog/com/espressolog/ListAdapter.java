@@ -46,6 +46,7 @@ public class ListAdapter extends ArrayAdapter<LogItem> {
             boolean brewRatio = false;
             boolean temperature = false;
             boolean date = false;
+            boolean volume = false;
 
             if (title != null) {
                 if ((l.getShotWeight() != null) && (!l.getShotWeight().equals("null"))) {
@@ -92,6 +93,10 @@ public class ListAdapter extends ArrayAdapter<LogItem> {
                         && !brewRatio) {
                     middle.setText("" + (l.getBrewRatio()));
                     brewRatio = true;
+                } else if ((l.getVolume() != null) && (!l.getVolume().equals("null"))
+                        && !volume) {
+                    middle.setText("" + (l.getVolume() + "mL"));
+                    volume = true;
                 } else if ((l.getTemperature() != null) && (!l.getTemperature().equals("null"))
                         && !temperature) {
                     middle.setText("" + (l.getTemperature()));
@@ -113,6 +118,9 @@ public class ListAdapter extends ArrayAdapter<LogItem> {
                 } else if ((l.getTemperature() != null) && (!l.getTemperature().equals("null"))
                         && !temperature) {
                     right.setText(l.getTemperature());
+                }else if ((l.getVolume() != null) && (!l.getVolume().equals("null"))
+                        && !volume) {
+                    right.setText("" + (l.getVolume() + "mL"));
                 } else if ((l.getDate() != null) && (!l.getDate().equals("null"))
                         && !date) {
                     right.setText("" + (l.getDate()));

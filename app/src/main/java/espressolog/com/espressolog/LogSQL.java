@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class LogSQL extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 7;
     // The database name.
     private static final String DATABASE_NAME = "LogDB";
 
@@ -38,7 +38,8 @@ public class LogSQL extends SQLiteOpenHelper {
                 "rating Text, " +
                 "dose TEXT, " +
                 "grind TEXT, " +
-                "notes TEXT)";
+                "notes TEXT, " +
+                "volume TEXT)";
 
         // Create the logs table.
         db.execSQL(CREATE_LOG_TABLE);
@@ -69,6 +70,7 @@ public class LogSQL extends SQLiteOpenHelper {
     private static final String KEY_DOSE = "dose";
     private static final String KEY_GRIND = "grind";
     private static final String KEY_NOTES = "notes";
+    private static final String KEY_VOLUME = "volume";
 
     private static final String[] COLUMNS = {
                                 KEY_ID,
@@ -80,7 +82,8 @@ public class LogSQL extends SQLiteOpenHelper {
                                 KEY_RATING,
                                 KEY_DOSE,
                                 KEY_GRIND,
-                                KEY_NOTES};
+                                KEY_NOTES,
+                                KEY_VOLUME};
 
     public void addLog(LogItem log){
         Log.v("addLog", log.toString());
@@ -99,6 +102,7 @@ public class LogSQL extends SQLiteOpenHelper {
         values.put(KEY_DOSE, log.getDose());
         values.put(KEY_GRIND, log.getGrind());
         values.put(KEY_NOTES, log.getNotes());
+        values.put(KEY_VOLUME, log.getVolume());
 
         // Insert into db.
         db.insert(TABLE_LOGS, // Table
@@ -142,6 +146,9 @@ public class LogSQL extends SQLiteOpenHelper {
         log.setBrewRatio(cursor.getString(5));
         log.setRating(cursor.getString(6));
         log.setDose(cursor.getString(7));
+        log.setGrind(cursor.getString(8));
+        log.setNotes(cursor.getString(9));
+        log.setVolume(cursor.getString(10));
 
         cursor.close();
         db.close();
@@ -164,6 +171,7 @@ public class LogSQL extends SQLiteOpenHelper {
         values.put("brewRatio", log.getBrewRatio());
         values.put("rating", log.getRating());
         values.put("dose", log.getDose());
+        values.put("volume", log.getVolume());
 
         // 3. updating row
         db.update(TABLE_LOGS, //table
@@ -218,6 +226,7 @@ public class LogSQL extends SQLiteOpenHelper {
                 log.setDose(cursor.getString(7));
                 log.setGrind(cursor.getString(8));
                 log.setNotes(cursor.getString(9));
+                log.setVolume(cursor.getString(10));
                 logs.addFirst(log);
             } while (cursor.moveToNext());
         }

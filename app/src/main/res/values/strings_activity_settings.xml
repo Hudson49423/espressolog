@@ -25,4 +25,7 @@
     <string name="pref_title_notes">Save your notes for the shot</string>
     <string name="pref_description_notes">Log notes you write for each extraction</string>
 
+    <string name="pref_title_volume">Save the shot volume</string>
+    <string name="pref_description_volume">Log the espresso shot\'s volume in mL</string>
+
 </resources>
