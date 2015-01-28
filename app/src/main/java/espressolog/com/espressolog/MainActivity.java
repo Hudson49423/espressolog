@@ -68,7 +68,6 @@ public class MainActivity extends ActionBarActivity {
                     Intent intent = new Intent(context, DetailActivity.class);
                     intent.putExtra("LogPosition", position);
                     startActivity(intent);
-                    finish();
                 }
             });
         }
