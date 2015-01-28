@@ -213,6 +213,7 @@ public class newLog extends ActionBarActivity {
             // takes user back to main activity.
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -228,6 +229,7 @@ public class newLog extends ActionBarActivity {
         // Simply starts the main activity.
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private String getDate() {

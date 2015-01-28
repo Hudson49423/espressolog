@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 
@@ -95,6 +94,7 @@ public class DetailActivity extends ActionBarActivity {
         // Bring the user back to the main activity.
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
 
     }
 }
