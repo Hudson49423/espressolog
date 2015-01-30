@@ -42,4 +42,7 @@
                                         then create a new log by pressing the new symbol!</string>
     <string name="detail_title">Log Details</string>
 
+    <string name="button_start">Start</string>
+    <string name="button_stop">Stop</string>
+    <string name="button_reset">Reset</string>
 </resources>

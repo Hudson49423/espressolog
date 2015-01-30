@@ -70,6 +70,14 @@ public class newLog extends ActionBarActivity {
             findViewById(R.id.volume).setVisibility(TextView.GONE);
             findViewById(R.id.volume_input).setVisibility(EditText.GONE);
         }
+
+        Intent intent = getIntent();
+        String t = intent.getStringExtra("time");
+        if (t != null){
+            EditText timeInput = (EditText) findViewById(R.id.shot_time_input);
+            timeInput.setText(t);
+        }
+
     }
 
 
