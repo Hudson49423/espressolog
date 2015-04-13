@@ -24,14 +24,20 @@
                     android:layout_height="wrap_content"
                     android:text="@string/button_start"
                     android:textColor="@color/TextColor"
-                    android:layout_weight=".5"/>
+                    android:layout_weight=".5"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/PrimaryColorDark"/>
 
                 <Button android:id="@+id/button_stop"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/button_stop"
                     android:textColor="@color/TextColor"
-                    android:layout_weight=".5"/>
+                    android:layout_weight=".5"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:background="@color/PrimaryColorDark"/>
             </LinearLayout>
     </RelativeLayout>
 
@@ -40,5 +46,7 @@
         android:layout_height="wrap_content"
         android:text="@string/button_reset"
         android:layout_below="@id/rel"
-        android:textColor="@color/TextColor"/>
+        android:layout_margin="5dp"
+        android:textColor="@color/TextColor"
+        android:background="@color/PrimaryColorDark"/>
 </RelativeLayout>
